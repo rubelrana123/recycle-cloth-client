@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../Contexts/AuthProvider';
+// import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const SignUp = () => {
+  const { register, formState: { errors },  handleSubmit } = useForm();
   const {createUser, googleSignin} = useContext(AuthContext);
-   const { register, formState: { errors },  handleSubmit } = useForm();
      const onSubmit = data =>{
        console.log(data)
           console.log(data)
@@ -20,8 +21,16 @@ const SignUp = () => {
     }).then(res => res.json())
       .then(imageData =>{ 
         console.log(imageData);
+        createUser(data.email, data.password)
+          .then(result => { 
+            console.log(result);
+          })
+
+
        })
      }
+
+
         const handleGoogleSignin = () =>{
 		googleSignin()
 			.then((result) => {
@@ -47,7 +56,7 @@ const SignUp = () => {
     <div>
           <div className={`p-12 `}>
       <div className="w-full mx-auto max-w-md p-8 space-y-3 rounded-xl border-2 shadow-2xl border-white">
-	<h1 className="text-2xl font-bold text-center">Add a Doctor </h1>
+	<h1 className="text-2xl font-bold text-center">Sign Up</h1>
  <form onSubmit={handleSubmit(onSubmit)}>
  
       
@@ -67,33 +76,36 @@ const SignUp = () => {
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Specialty</span>
+            <span className="label-text">Account Type</span>
           </label>
-     <select  {...register("specialty")} className="select  select-ghost border-1 input-bordered w-full  ">
-      {/* <option disabled selected>Pick the best JS framework</option> */}
-      {/* {
-        specialties.map(specialty => {
-          return (
-               <option key={specialty._id} value ={specialty?.name}      >{specialty?.name}</option>
-            
-          )
-        })
-      } */}
+     <select  {...register("accountType")} className="select  select-ghost border-1 input-bordered w-full  ">
+           <option selected>Buyer</option>
+     
+               <option >Seller</option>
+     
       </select>
         </div>
 
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Image</span>
+            <span className="label-text">Profile Photo </span>
           </label>
           <input {...register("image")}  type="file"   className="input input-bordered" />
               {errors.image && <p className='text-red-400'>{errors.image?.message}</p>}
+        </div>
+                <div className="form-control">
+          <label className="label">
+            <span className="label-text">Password</span>
+          </label>
+          <input {...register("password", {required : "Password is required" , minLength : {value : 6, message : "please Provide 6 character or longer"} , pattern  : { value : /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,message : "Please provide at least one uppercase letter, one lowercase letter, one number and one special character:"}})}  type="password"  placeholder="********" className="input input-bordered" />
+              {errors.password && <p className='text-red-400'>{errors.password?.message}</p>}
+
         </div>
 
 
    
         
-      <input type="submit" className='btn my-3  w-full bg-secondary text-white' value="Add" />
+      <input type="submit" className='btn my-3  w-full bg-secondary text-white' value="Sign Up" />
  
     
      
