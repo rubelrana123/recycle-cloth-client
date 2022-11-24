@@ -17,25 +17,23 @@ const Navbar = () => {
   }
   const menuItem = <React.Fragment>
           <li><Link to="/">Home</Link></li>
-      <li><Link>About </Link></li>
-      {/* <li><Link to="/appoinment">Appointment</Link></li> */}
-      <li><Link to="blog" >Blog</Link></li>
-      {/* {
-        user?.uid ? <>      */}
+           <li><Link to="/blog" >Blog</Link></li>
+      
+        { 
+        user?.uid ? <>    
            <li><Link to="/dashboard">DashBoard</Link></li>
-        
            <li><Link onClick={handleLogOut} >Logout</Link></li>
-           {/* { */}
-            {/* user?.displayName &&  */}
-						<li className='items-center flex'>NAme</li>
-           {/* } */}
-   {/* </> */}
-
-        {/* : */}
+            
+					   
+             <div className="avatar items-center flex">
+              <div className="w-8 h-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src={user?.photoURL} alt="profile" />
+            </div>
+         </div> 
+         </>
+          :  
         <li><Link to="/login">Login</Link></li>
-
-
-      {/* } */}
+        }
   </React.Fragment>
   return (
     <div className="navbar bg-base-100">

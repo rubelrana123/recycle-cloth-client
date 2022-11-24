@@ -2,14 +2,17 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import Spinner from "../../../components/Spinner"
+import toast from 'react-hot-toast';
+import { Navigate, useNavigate } from 'react-router-dom';
 const SignUp = () => {
   const { register, formState: { errors },  handleSubmit } = useForm();
-  const {createUser, googleSignin, loading,setLoading} = useContext(AuthContext);
+  const {createUser, googleSignin, loading,setLoading, profileUpdate} = useContext(AuthContext);
+  const navigate = useNavigate();
      const onSubmit = data =>{
        console.log(data)
           console.log(data)
 
-        const image = data.image[0];
+    const image = data.image[0];
     const formData = new FormData();
     formData.append('image', image);
     const url = `https://api.imgbb.com/1/upload?key=6713f4ae42449c9bcbad8ca71691a54e`;
@@ -23,6 +26,20 @@ const SignUp = () => {
         createUser(data.email, data.password)
           .then(result => { 
             console.log(result);
+            console.log(imageData.data.url);
+            const profile = {
+              photoURL : imageData.data.url,
+              name : data.name,
+            }
+            console.log(profile);
+            profileUpdate(profile).then( () => {
+              toast.success("profileupdate");
+              navigate("/")
+            }).catch(error => console.log(error))
+            
+
+
+
           }).catch(error => {
             console.log("line 27 signup", error)
              setLoading(false)
@@ -83,7 +100,7 @@ const SignUp = () => {
           <label className="label">
             <span className="label-text">Account Type</span>
           </label>
-     <select  {...register("accountType")} className="select  select-ghost border-1 input-bordered w-full  ">
+     <select  {...register("accountType",  {required: true})} className="select  select-ghost border-1 input-bordered w-full  ">
            <option selected>Buyer</option>
      
                <option >Seller</option>
@@ -95,7 +112,7 @@ const SignUp = () => {
           <label className="label">
             <span className="label-text">Profile Photo </span>
           </label>
-          <input {...register("image")}  type="file"   className="input input-bordered" />
+          <input {...register("image", {required: true} )}  type="file"   className="input input-bordered" />
               {errors.image && <p className='text-red-400'>{errors.image?.message}</p>}
         </div>
                 <div className="form-control">
