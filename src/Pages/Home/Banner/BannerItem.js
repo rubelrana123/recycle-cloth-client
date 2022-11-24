@@ -9,12 +9,12 @@ const BannerItem = ({slide}) => {
                     <img src={image} alt="" className="w-full  " />
                 </div>
                 <div className="absolute flex justify-end transform -translate-y-1/2 left-24 top-1/4">
-                    <h1 className='text-6xl font-bold text-white'>
+                    <h1 className='lg:text-6xl md:text-5xl text-4xl  font-bold text-white'>
                        Our Shop
                     </h1>
                 </div>
-                <div className="absolute flex justify-start transform -translate-y-1/2 w-2/5 left-24 top-1/2">
-                    <p className='text-5xl font-bold text-white'>{descripton}</p>
+                <div className="absolute flex justify-start transform -translate-y-1/2 lg:w-2/5 left-24 top-1/2">
+                    <p className='lg:text-5xl md:text-4xl text-3xl font-bold text-white'>{descripton}</p>
                 </div>
                 <div className="absolute flex justify-start transform -translate-y-1/2 w-2/5 left-24 top-3/4">
                     <button className="btn btn-primary text-white rounded-md mr-5 ">Lets Go</button>
