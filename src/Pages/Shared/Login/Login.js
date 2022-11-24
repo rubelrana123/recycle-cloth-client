@@ -114,7 +114,7 @@ const Login = () => {
       <input type="submit" className='btn my-3  w-full bg-secondary' />
         <div>
           <p className="text-xs text-center sm:px-6 dark:text-gray-400">New to Doctors Portal??
-		<Link to="/register" className="underline text-primary">create an account</Link>
+		<Link to="/signup" className="underline text-primary">create an account</Link>
 	</p> 
         </div>
     

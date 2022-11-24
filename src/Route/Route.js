@@ -5,11 +5,23 @@ import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage"
 import Home from "../Pages/Home/Home"
 import SignUp from '../Pages/Shared/Signup/Signup';
 import Login from '../Pages/Shared/Login/Login';
+import DashboardLayout from '../Layout/DashBoardLayout/DashboardLayout';
+import MyOrder from '../Pages/Dashboard/MyOrder/MyOrder';
+import AddProduct from '../Pages/Dashboard/AddProduct/AddProduct';
+import Blog from '../Pages/Blog/Blog';
  export  const router = createBrowserRouter([ 
   { path: "/", element : <Main></Main>, errorElement : <ErrorPage/>, children : [
      { path : "/", element : <Home></Home>},
    { path : "/signup", element : <SignUp></SignUp>},
    { path : "/login", element : <Login></Login>},
+   { path : "/blog", element : <Blog></Blog>},
     
- ]}
+ ]},
+ {
+  path : "/dashboard", element : <DashboardLayout></DashboardLayout>, errorElement : <ErrorPage/> , children : [
+    {path : "/dashboard", element : <MyOrder></MyOrder>},
+    {path : "/dashboard/myproduct", element : <MyOrder></MyOrder> },
+    {path : "/dashboard/addproduct", element : <AddProduct></AddProduct> },
+  ]
+ }
  ])

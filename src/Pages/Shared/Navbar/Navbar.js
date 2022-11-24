@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
  
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider';
  
 
 const Navbar = () => {
-  // const {user, signout} = useContext(AuthContext);
+  const {user, signout} = useContext(AuthContext);
   const handleLogOut = () => {
-    // signout().then( () => {
+    signout().then( () => {
 
-    //   toast.success("Logout Successfully", {autoClose : 200});
-    //   localStorage.removeItem("token")
-    // })
+      toast.success("Logout Successfully", {autoClose : 200});
+      localStorage.removeItem("token")
+    })
 
   }
   const menuItem = <React.Fragment>
           <li><Link to="/">Home</Link></li>
       <li><Link>About </Link></li>
-      <li><Link to="/appoinment">Appointment</Link></li>
-      <li><Link>Contact</Link></li>
+      {/* <li><Link to="/appoinment">Appointment</Link></li> */}
+      <li><Link to="blog" >Blog</Link></li>
       {/* {
         user?.uid ? <>      */}
            <li><Link to="/dashboard">DashBoard</Link></li>

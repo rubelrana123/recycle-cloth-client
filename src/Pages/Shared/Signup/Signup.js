@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../Contexts/AuthProvider';
-// import { AuthContext } from '../../../Contexts/AuthProvider';
-
+import Spinner from "../../../components/Spinner"
 const SignUp = () => {
   const { register, formState: { errors },  handleSubmit } = useForm();
-  const {createUser, googleSignin} = useContext(AuthContext);
+  const {createUser, googleSignin, loading,setLoading} = useContext(AuthContext);
      const onSubmit = data =>{
        console.log(data)
           console.log(data)
@@ -24,10 +23,13 @@ const SignUp = () => {
         createUser(data.email, data.password)
           .then(result => { 
             console.log(result);
+          }).catch(error => {
+            console.log("line 27 signup", error)
+             setLoading(false)
           })
 
 
-       })
+       }) 
      }
 
 
@@ -50,7 +52,10 @@ const SignUp = () => {
       
     
     }
-  
+   
+    if(loading) {
+      return <Spinner/>
+    }
 
   return (
     <div>
