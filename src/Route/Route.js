@@ -9,12 +9,15 @@ import DashboardLayout from '../Layout/DashBoardLayout/DashboardLayout';
 import MyOrder from '../Pages/Dashboard/MyOrder/MyOrder';
 import AddProduct from '../Pages/Dashboard/AddProduct/AddProduct';
 import Blog from '../Pages/Blog/Blog';
+import EachCategory from '../Pages/Home/Category/EachCategory/EachCategory';
+ 
  export  const router = createBrowserRouter([ 
   { path: "/", element : <Main></Main>, errorElement : <ErrorPage/>, children : [
      { path : "/", element : <Home></Home>},
    { path : "/signup", element : <SignUp></SignUp>},
    { path : "/login", element : <Login></Login>},
    { path : "/blog", element : <Blog></Blog>},
+   { path : "/category/:id", loader :async ({params}) => await fetch(`http://localhost:5000/category/${params.id}`), element : < EachCategory></ EachCategory>},
     
  ]},
  {

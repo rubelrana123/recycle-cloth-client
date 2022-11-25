@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
- 
+ import logo from "../../../asserts/Logo/Logo (2).png"
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
  
 
 const Navbar = () => {
   const {user, signout} = useContext(AuthContext);
+  console.log("username", user, user?.displayName);
   const handleLogOut = () => {
     signout().then( () => {
 
@@ -23,11 +24,12 @@ const Navbar = () => {
         user?.uid ? <>    
            <li><Link to="/dashboard">DashBoard</Link></li>
            <li><Link onClick={handleLogOut} >Logout</Link></li>
+             <p>{user?.displayName}</p>
             
 					   
-             <div className="avatar items-center flex">
-              <div className="w-8 h-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={user?.photoURL} alt="profile" />
+             <div className="avatar  m-3 items-center flex">
+              <div className="w-8 h-8  rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src={user?.photoURL}  alt="profile" />
             </div>
          </div> 
          </>
@@ -46,7 +48,11 @@ const Navbar = () => {
            {menuItem}
       </ul>
     </div>
-    <Link to="/" className="btn btn-ghost normal-case text-xl">Recycle Cloth</Link>
+    <div className='flex items-center'>
+      <img src={logo} className="h-10 w-10" alt="" />
+    <Link to="/" className=" normal-case text-xl">Recycle Cloth</Link>
+
+    </div>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">

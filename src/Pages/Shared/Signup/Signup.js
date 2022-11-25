@@ -29,7 +29,7 @@ const SignUp = () => {
             console.log(imageData.data.url);
             const profile = {
               photoURL : imageData.data.url,
-              name : data.name,
+              displayName : data.name,
             }
             console.log(profile);
             profileUpdate(profile).then( () => {
