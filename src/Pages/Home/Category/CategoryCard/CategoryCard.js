@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import BookingModal from '../BokkingModal/BookingModal';
 
-const CategoryCard = ({product}) => {
+const CategoryCard = ({product, setEachProduct}) => {
   console.log("object", product);
  
   return (
@@ -27,8 +27,12 @@ const CategoryCard = ({product}) => {
 
        </div>
     <div className="card-actions justify-end">
-       <label htmlFor="booking-modal" className="btn btn-primary text-white"
-     >Book Now</label>
+      
+       <label
+       onClick={() => setEachProduct(product)}
+        htmlFor="booking-modal" 
+        className="btn btn-primary text-white"
+     >Book Now</label> 
       {/* <button className='bg-primary py-3 px-2 rounded-sm text-white'>Book Now</button> */}
     </div>
   </div>

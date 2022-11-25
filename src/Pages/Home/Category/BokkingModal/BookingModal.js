@@ -5,10 +5,10 @@ import { AuthContext } from "../../../../Contexts/AuthProvider";
  
  
 
-const BookingModal = ({product}) => {
+const BookingModal = ({eachProduct, setEachProduct}) => {
   const {user} = useContext(AuthContext);
   console.log("modal", user);
-  console.log("modal product", product);
+  console.log("modal product", eachProduct);
   // console.log(treatment.price);
 
   const handleForm = e => {
@@ -19,31 +19,38 @@ const BookingModal = ({product}) => {
     const price =  form?.price?.value;
     const phone = form?.phone?.value;
     const location = form?.location?.value;
-    const date = new Date();
-    console.log(price, phone, email, name, date, location);
+    const date = new Date().toLocaleString();
+    // console.log(price, phone, email, name, date, location);
     const booking = {
-     
-
+      product_name : eachProduct?.product_name,
+      price : price,
+      name : name,
+      email : email,
+      phone : phone,
+      location :  location,
+      date : date
+ 
     }
-    // fetch("http://localhost:5000/bookings", {
-    //   method : 'POST',
-    //   headers : {
-    //     'content-type' : "application/json"
-    //   },
-    //   body : JSON.stringify(booking)
-    // }).then(res => res.json()).then(data =>{ 
-    //   if(data.acknowledged) {
+    console.log(booking);
+    fetch("http://localhost:5000/booking", {
+      method : 'POST',
+      headers : {
+        'content-type' : "application/json"
+      },
+      body : JSON.stringify(booking)
+    }).then(res => res.json()).then(data =>{ 
+      if(data.acknowledged) {
 
-    //     setTreatment(null);
-    //     refetch();
-    //     toast.success("succesfully booking")
-    //     console.log(data)
-    //   }
-    //   else {
-    //     toast.error(data.message)
-    //   }
-    // })
-    // console.log(booking);
+        setEachProduct(null);
+        
+        // toast.success("succesfully booking")
+        console.log(data)
+      }
+      else {
+        // toast.error(data.message)
+      }
+    })
+    console.log(booking);
   }
    return (
     <section>
@@ -51,12 +58,12 @@ const BookingModal = ({product}) => {
 <div className="modal">
   <div className="modal-box relative">
     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    <h3 className="text-lg font-bold"> Product Name :  {product?.product_name}</h3>
+    <h3 className="text-lg font-bold"> Product Name :  {eachProduct?.product_name}</h3>
     <form onSubmit={handleForm}   className='grid  grid-cols-1 gap-3 mt-6'>
       <input type="text" name="name"  defaultValue={user?.displayName} disabled  placeholder="Type Your Name" className="input input-bordered w-full " />
       <input type="text" name="email"  disabled  defaultValue={user?.email}  placeholder="Type Your Name" className="input input-bordered w-full " />
        
-      <input type="name" name="price" disabled  defaultValue= {`${product?.resale_price} BDT`}    className="input input-bordered w-full " />
+      <input type="name" name="price" disabled  defaultValue= {eachProduct?.resale_price}    className="input input-bordered w-full " />
     <input type="text" name='location' placeholder="Meeting Location" className="input input-bordered w-full " />
       <input type="number"  name="phone"   placeholder="Phone number +8801*********" className="input input-bordered w-full " />
       <input type="submit" placeholder="Type here" className="input input-bordered btn btn-accent w-full " />

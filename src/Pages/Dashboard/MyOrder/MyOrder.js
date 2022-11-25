@@ -1,6 +1,30 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
+import Spinner from '../../../components/Spinner';
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const MyOrder = () => {
+  const {user} = useContext(AuthContext);
+
+    const {data : orders =[], isLoading} = useQuery({
+    queryKey: ['bookings', user?.email],
+    queryFn: () =>
+      fetch(`http://localhost:5000/booking?email=${user?.email}`
+      
+      // {
+      //    headers : {
+      //           authorization : `bearer ${localStorage.getItem('token')}`
+      //         }   }
+
+      ).then(res =>
+        res.json()
+      )
+  })
+ console.log("order", orders);
+  if(isLoading) {
+    return <Spinner></Spinner>
+  }
+
   return (
     <div>
        <div>
@@ -17,10 +41,16 @@ const MyOrder = () => {
       </tr>
     </thead>
     <tbody>
-     
+
+
+      {
+        orders.map((order, i) => {
+          return (
+
+
          <tr >
-        <th>1</th>
-        <td>shirt</td>
+        <th>{i + 1}</th>
+        <td>{order.product_name}</td>
         <td>200</td>
         <td>
            
@@ -32,6 +62,15 @@ const MyOrder = () => {
         className='btn btn-xs bg-red-400'>Delete</button> </td>
          
       </tr>
+
+
+
+
+          )
+        })
+      }
+     
+
       
      
  
