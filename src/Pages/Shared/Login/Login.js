@@ -56,8 +56,8 @@ const Login = () => {
 			.then((result) => {
 	
 				const user = result.user;
-				setloginUserEmail(user?.email);
-			 
+				
+			  saveSocialUser(user?.displayName, user?.email)
 				console.log(user);
 				// ...
 			})
@@ -70,6 +70,36 @@ const Login = () => {
 				// ...
 			});
 	}
+
+
+
+  const saveSocialUser = (name, email) => {
+    console.log("social user",name, email);
+
+    const user = {
+      name , email, role : "Buyer"
+    }
+
+      fetch('http://localhost:5000/user', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+          if(data.acknowledged) {
+
+            setloginUserEmail(email);
+            toast.success("post success")
+          }
+            console.log("social login data", data);
+        })
+   }
+
+
+
  
 	// const handleBlurEmail = (e) =>{
 	// 	const email = e.target.value;

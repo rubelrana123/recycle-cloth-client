@@ -42,7 +42,8 @@ const MyOrder = () => {
 
 
       {
-        orders.map((order, i) => {
+        orders &&
+        orders?.map((order, i) => {
           return (
 
 
