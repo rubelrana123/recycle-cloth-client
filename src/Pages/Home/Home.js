@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from './Banner/Banner';
 import Category from './Category/Category';
+import DisCount from './Discount/DisCount';
  
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
     <div>
         <Banner></Banner>
         <Category></Category>
+        <DisCount></DisCount>
     </div>
   );
 };

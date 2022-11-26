@@ -3,6 +3,8 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const AddProduct = () => {
 	const {user} = useContext(AuthContext);
+    const date = new Date().toLocaleString();
+
  const handleForm = e => {
     e.preventDefault();
     const form = e.target;
@@ -14,15 +16,13 @@ const AddProduct = () => {
   const originalPrice =form.originalPrice.value;
   const resalePrice =  form.resalePrice.value;
   const condition =form.condition.value;
-  const category =  form.category.value;
-  const name =form.name.value;
+  const category_id =  form.category.value;
+  const name = form.name.value;
   const location =form.location.value;
-   console.log(name,location , condition, clothName, category, originalPrice, resalePrice);
-
-
-
-
-
+  const phoneNumber =form.phonenumber.value;
+  const year_used =form.year.value;
+  //  console.log(name,location , condition, clothName, category_id, originalPrice, resalePrice);
+ 
      const image = form.image.files[0];
 		 console.log(image);
     const formData = new FormData();
@@ -35,8 +35,23 @@ const AddProduct = () => {
     }).then(res => res.json())
       .then(imageData =>{ 
         console.log(imageData);
-             })
-  }
+       const AddProduct = {
+          product_name: clothName,
+         category_id,
+        published_date: date,
+        image: imageData.data.url,
+         location : location,
+         resale_price: resalePrice,
+         original_price: originalPrice,
+        year_used: year_used  + " years",
+        product_condition: condition,
+          phone: phoneNumber,
+           seller_name: name,
+          seller_email: user?.email
+       }
+       console.log("All Product", AddProduct);
+     })
+     }
   return (
     <div>
        
@@ -50,7 +65,7 @@ const AddProduct = () => {
 				</div>
 				<div className="col-span-3">
 					<label htmlFor="address" className="text-sm">Mobile Number</label>
-					<input id="address" type="number" name='phoneNumber' placeholder="Seller mobile number" className="w-full px-3 rounded-md h-12"  />
+					<input id="address" type="number" name='phonenumber' placeholder="Seller mobile number" className="w-full px-3 rounded-md h-12"  />
 				</div>
 				<div className="col-span-3">
 					<label htmlFor="address" className="text-sm">Location</label>
@@ -91,22 +106,26 @@ const AddProduct = () => {
 				<div className="col-span-full sm:col-span-3">
 					<label htmlFor="Clothcondition"  className="text-sm">Cloth Condition</label>
 					     <select name="condition" className="select  select-ghost border-1 input-bordered w-full  ">
-           <option selected>Used</option>
-     
-               <option >New</option>
-     
+               <option selected>Good</option>
+               <option >Excellent</option>
+               <option >Medium</option>
+               <option >Bad</option>
       </select>
            
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label htmlFor="ClothPrice" className="text-sm">Cloth Category</label>
 					      <select name='category' className="select  select-ghost border-1 input-bordered w-full  ">
-           <option selected>shirt</option>
+           <option value="01" selected>shirt</option>
      
-               <option >Jeans</option>
-               <option >Jacket</option>
+               <option value="02" >Jeans</option>
+               <option value="03" >Jacket</option>
      
       </select>
+				</div>
+        	<div className="col-span-full sm:col-span-3">
+					<label htmlFor="ClotheUse" className="text-sm">Year Used</label>
+					<input id="ClotheUse" type="number" name='year' placeholder="Cloth  Resale price"className="w-full px-3 rounded-md h-12"  />
 				</div>
       
 			 
