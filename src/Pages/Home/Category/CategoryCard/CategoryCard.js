@@ -8,20 +8,21 @@ const CategoryCard = ({product, setEachProduct}) => {
  
   return (
     <div>
-      <div className="card w-96 bg-gray-300 shadow-xl">
-  <figure><img src={product?.image} className="h-40 w-40" alt="products" /></figure>
-  <div className="card-body">
-       <div className='flex justify-between'>
-            <h2 className="card-title">
-      {product.product_name}
-      <div className="badge badge-secondary">{product.product_condition}</div>
-    </h2>
-     <div className='flex gap-5'>
-      <h2>Publiseh Date : {product.published_date}</h2>
-      <h2>Location : {product.location}</h2>
+      <div className="card w-full bg-red-50 shadow-xl">
+  <figure><img src={product?.image} className="w-full  bg-white  rounded-md h-72" alt="products" /></figure>
+ <div className='flex gap-1 pl-2'>
+      <h2>Date : {product.published_date}</h2>
+      <h2 className='ml-2'>Location : {product.location}</h2>
       
-     </div>
-       </div>
+  </div>
+  <div className="px-2">
+     <h2 className="card-title ">
+       {product.product_name} 
+      <div className="badge badge-base">{product.product_condition}</div>
+
+       </h2>
+
+      
        <div>
           <p>Used : {product.year_used}</p>
 
@@ -31,7 +32,7 @@ const CategoryCard = ({product, setEachProduct}) => {
        <label
        onClick={() => setEachProduct(product)}
         htmlFor="booking-modal" 
-        className="btn btn-primary text-white"
+        className="btn btn-primary rounded-md text-white"
      >Book Now</label> 
       {/* <button className='bg-primary py-3 px-2 rounded-sm text-white'>Book Now</button> */}
     </div>

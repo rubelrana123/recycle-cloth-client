@@ -10,6 +10,8 @@ import MyOrder from '../Pages/Dashboard/MyOrder/MyOrder';
 import AddProduct from '../Pages/Dashboard/AddProduct/AddProduct';
 import Blog from '../Pages/Blog/Blog';
 import EachCategory from '../Pages/Home/Category/EachCategory/EachCategory';
+import AllSeller from '../Pages/Dashboard/AllSeller/AllSeller';
+import AllBuyer from '../Pages/Dashboard/AllBuyer/AllBuyer';
  
  export  const router = createBrowserRouter([ 
   { path: "/", element : <Main></Main>, errorElement : <ErrorPage/>, children : [
@@ -25,6 +27,8 @@ import EachCategory from '../Pages/Home/Category/EachCategory/EachCategory';
     {path : "/dashboard", element : <MyOrder></MyOrder>},
     {path : "/dashboard/myproduct", element : <MyOrder></MyOrder> },
     {path : "/dashboard/addproduct", element : <AddProduct></AddProduct> },
+    {path : "/dashboard/allseller", element : <AllSeller></AllSeller> },
+    {path : "/dashboard/allbuyer", element : <AllBuyer></AllBuyer> }
   ]
  }
  ])

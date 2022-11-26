@@ -43,7 +43,7 @@ const Category = () => {
              return (
                <Link key={category._id} to= {`category/${category.id}`} >
                   
-                  <div className='flex rounded-lg gap-4 flex-row  justify-between card text-white  md:card-side shadow-xl     bg-gradient-to-r from-primary to-secondary'>
+                  <div className='flex rounded-lg gap-4 flex-row  justify-between card text-white  md:card-side shadow-xl hover:shadow-2xl hover:border-2    bg-gradient-to-r from-primary to-secondary'>
         <div className='w-1/2  flex justify-center'>
             <figure>
                 <img src={category?.img} alt="Shirt" className='lg:h-24 md:h-24 h-30  lg:w-full' />
