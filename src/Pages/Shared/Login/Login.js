@@ -1,36 +1,40 @@
  
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
  
  
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
  
+import UserToken from '../../../Hooks/UseToken';
+ 
 
 const Login = () => {
 	const {user, signin, googleSignin,forgetPassword } = useContext(AuthContext);
   const [error, setError] = useState("");
-	const [userEmail, setUserEmail] = useState('');
+	// const [userEmail, setUserEmail] = useState('');
 	const location = useLocation();
 		const navigate = useNavigate();
 		const from = location?.state?.from.pathname || "/"
     const { register, formState: { errors },  handleSubmit } = useForm();
-    const [data, setData] = useState("");
+   
 	  const [loginUserEmail, setloginUserEmail] = useState("");
-
-	//   const [token] = UserToken(loginUserEmail);
-	// 	console.log( "email, token",  loginUserEmail,token );
-	//   if(token) {
-	// 	navigate(from, {replace : true})
+	 
+ 
+	  const [token] = UserToken(loginUserEmail);
+		console.log( "email, token",  loginUserEmail,token );
+	  if(token) {
+		navigate(from, {replace : true})
       
-	// }
+	}
     const onSubmit = data =>{
 			 console.log(data)
 			 signin(data.email, data.password).then((userCredential) => {
     const user = userCredential.user;
 		setloginUserEmail(user?.email)
     console.log(user);
-		// toast.success("Login Successfully..")
+		toast.success("Login Successfully..")
 	 
 		setError("")
   
@@ -52,7 +56,8 @@ const Login = () => {
 			.then((result) => {
 	
 				const user = result.user;
-				setloginUserEmail(user?.email)
+				setloginUserEmail(user?.email);
+			 
 				console.log(user);
 				// ...
 			})
@@ -66,24 +71,24 @@ const Login = () => {
 			});
 	}
  
-	const handleBlurEmail = (e) =>{
-		const email = e.target.value;
-		// console.log("email got ",email);
-		setUserEmail(email);
-	}
-	const handleForgetPassword = () =>{
+	// const handleBlurEmail = (e) =>{
+	// 	const email = e.target.value;
+	// 	// console.log("email got ",email);
+	// 	setUserEmail(email);
+	// }
+	// const handleForgetPassword = () =>{
 
-		forgetPassword(userEmail).then(() => {
-      //  toast.success("  Password reset email sent!", {autoClose : 200})
-        // .. 
-        })
-      .catch((error) => {
+	// 	forgetPassword(userEmail).then(() => {
+  //     //  toast.success("  Password reset email sent!", {autoClose : 200})
+  //       // .. 
+  //       })
+  //     .catch((error) => {
        
-        const errorMessage = error.message;
-				console.log(errorMessage);
-        // ..
-      });
-	}
+  //       const errorMessage = error.message;
+	// 			console.log(errorMessage);
+  //       // ..
+  //     });
+	// }
   
   return (
     <div className={`p-12 `}>
@@ -97,7 +102,7 @@ const Login = () => {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input {...register("email",  {required: "Email is required"})} onBlur={handleBlurEmail}  type="email"  placeholder="Type Email" className="input input-bordered" />
+          <input {...register("email",  {required: "Email is required"})}    type="email"  placeholder="Type Email" className="input input-bordered" />
               {errors.email && <p className='text-red-400'>{errors.email?.message}</p>}
         </div>
       
@@ -110,10 +115,10 @@ const Login = () => {
 
         </div>
 				{error && <p>{error}</p>}
-         <Link className='' onBlur={handleForgetPassword}>Forget password</Link>
+         <Link className='' >Forget password</Link>
       <input type="submit" className='btn my-3  w-full bg-secondary' />
         <div>
-          <p className="text-xs text-center sm:px-6 dark:text-gray-400">New to Doctors Portal??
+          <p className="text-xs text-center sm:px-6 dark:text-gray-400">New to Recycle Cloth??
 		<Link to="/signup" className="underline text-primary">create an account</Link>
 	</p> 
         </div>

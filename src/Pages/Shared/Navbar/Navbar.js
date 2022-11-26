@@ -12,7 +12,7 @@ const Navbar = () => {
     signout().then( () => {
 
       toast.success("Logout Successfully", {autoClose : 200});
-      localStorage.removeItem("token")
+      localStorage.removeItem("token");
     })
 
   }

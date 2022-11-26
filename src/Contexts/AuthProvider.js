@@ -48,7 +48,7 @@ useEffect(() => {
 
 return () => unSubscribe();
 }, [])
-  const AuthInfo = {user,loading, createUser, profileUpdate, signin,signout, googleSignin, forgetPassword}
+  const AuthInfo = {user,loading, setLoading, createUser, profileUpdate, signin,signout, googleSignin, forgetPassword}
   return (
     <div>
       <AuthContext.Provider value = {AuthInfo}>

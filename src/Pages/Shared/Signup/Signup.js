@@ -1,16 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import Spinner from "../../../components/Spinner"
 import toast from 'react-hot-toast';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import UserToken from '../../../Hooks/UseToken';
+
+ 
+ 
 const SignUp = () => {
   const { register, formState: { errors },  handleSubmit } = useForm();
   const {createUser, googleSignin, loading,setLoading, profileUpdate} = useContext(AuthContext);
   const navigate = useNavigate();
+  const [userCredentialEmail, setUserCredentialEmail] = useState('');
+
+  const [token] = UserToken(userCredentialEmail);
+  console.log("create user",userCredentialEmail, token);
+ 
+
+  if(token  ) {
+    navigate("/");
+  }
+ 
      const onSubmit = data =>{
-       console.log(data)
-          console.log(data)
+    // console.log(data)
+    console.log("signup data",data)
 
     const image = data.image[0];
     const formData = new FormData();
@@ -25,6 +39,7 @@ const SignUp = () => {
         console.log(imageData);
         createUser(data.email, data.password)
           .then(result => { 
+            const user = result?.user;
             console.log(result);
             console.log(imageData.data.url);
             const profile = {
@@ -33,8 +48,10 @@ const SignUp = () => {
             }
             console.log(profile);
             profileUpdate(profile).then( () => {
+              setUserCredentialEmail(user?.email);
+              saveUser(data.name, data.email, data.accountType)
               toast.success("profileupdate");
-              navigate("/")
+              // navigate("/")
             }).catch(error => console.log(error))
             
 
@@ -51,13 +68,16 @@ const SignUp = () => {
 
 
         const handleGoogleSignin = () =>{
-		googleSignin()
-			.then((result) => {
-	
-				const user = result.user;
-				console.log(user);
-				// ...
-			})
+		    googleSignin().then((result) => {
+          const user = result.user;
+        
+        saveSocialUser(user?.displayName, user?.email)
+         
+        
+
+       
+        
+		})
 			.catch((error) => {
 				// Handle Errors here.
 				const errorCode = error.code;
@@ -66,9 +86,56 @@ const SignUp = () => {
 				 console.log(errorMessage);
 				// ...
 			});
-      
     
     }
+
+   const saveSocialUser = (name, email) => {
+    console.log("social user",name, email);
+
+    const user = {
+      name , email, role : "Buyer"
+    }
+
+      fetch('http://localhost:5000/user', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+          if(data.acknowledged) {
+
+            setUserCredentialEmail(email)
+            toast.success("post success")
+          }
+            console.log("social login data", data);
+        })
+   }
+
+
+    
+     const saveUser = (name, email, role) =>{
+        const user ={name, email, role};
+        console.log("saveuser", user);
+        fetch('http://localhost:5000/user', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+          setUserCredentialEmail(email)
+            console.log(data);
+        })
+    }
+    
+
+
+
    
     if(loading) {
       return <Spinner/>

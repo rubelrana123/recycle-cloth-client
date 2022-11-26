@@ -23,6 +23,8 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
     // console.log(price, phone, email, name, date, location);
     const booking = {
       product_name : eachProduct?.product_name,
+      product_id : eachProduct?._id,
+    
       price : price,
       name : name,
       email : email,
@@ -35,7 +37,8 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
     fetch("http://localhost:5000/booking", {
       method : 'POST',
       headers : {
-        'content-type' : "application/json"
+        'content-type' : "application/json",
+        authorization : `bearer ${localStorage.getItem('token')}`
       },
       body : JSON.stringify(booking)
     }).then(res => res.json()).then(data =>{ 
