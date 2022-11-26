@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const AddProduct = () => {
@@ -49,8 +50,28 @@ const AddProduct = () => {
            seller_name: name,
           seller_email: user?.email
        }
+       saveProduct(AddProduct, form);
        console.log("All Product", AddProduct);
      })
+     }
+
+     const saveProduct = (product, form) => {
+      fetch("http://localhost:5000/product", {
+      method : 'POST',
+      headers : {
+        'content-type' : "application/json",
+        authorization : `bearer ${localStorage.getItem('token')}`
+      },
+      body : JSON.stringify(product)
+    }).then(res => res.json()).then(data => {
+      if(data.acknowledged) {
+        form.reset();
+         toast.success("Product Added Successfully")
+
+      }
+          
+
+    } )
      }
   return (
     <div>
