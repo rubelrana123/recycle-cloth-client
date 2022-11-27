@@ -24,7 +24,7 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
     const booking = {
       product_name : eachProduct?.product_name,
       product_id : eachProduct?._id,
-    
+     image : eachProduct.image,
       price : price,
       name : name,
       email : email,

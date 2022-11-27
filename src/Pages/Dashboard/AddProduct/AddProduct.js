@@ -48,7 +48,8 @@ const AddProduct = () => {
         product_condition: condition,
           phone: phoneNumber,
            seller_name: name,
-          seller_email: user?.email
+          seller_email: user?.email,
+          seller_verify : false
        }
        saveProduct(AddProduct, form);
        console.log("All Product", AddProduct);
@@ -103,7 +104,7 @@ const AddProduct = () => {
               <label  className='block mb-2 text-sm'>
                 Select Cloth Image:
               </label>
-              <div htmlFor='image' className='border-dotted border-4 border-black'> 
+              <div htmlFor='image' className='border-dotted border-4 bg-white border-black'> 
               <input
                
                 type='file'
@@ -126,7 +127,7 @@ const AddProduct = () => {
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label htmlFor="Clothcondition"  className="text-sm">Cloth Condition</label>
-					     <select name="condition" className="select  select-ghost border-1 input-bordered w-full  ">
+					     <select name="condition" className="select bg-white select-ghost border-1 input-bordered w-full  ">
                <option selected>Good</option>
                <option >Excellent</option>
                <option >Medium</option>
@@ -136,7 +137,7 @@ const AddProduct = () => {
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label htmlFor="ClothPrice" className="text-sm">Cloth Category</label>
-					      <select name='category' className="select  select-ghost border-1 input-bordered w-full  ">
+					      <select name='category' className="select bg-white  select-ghost border-1 input-bordered w-full  ">
            <option value="01" selected>shirt</option>
      
                <option value="02" >Jeans</option>
@@ -147,6 +148,10 @@ const AddProduct = () => {
         	<div className="col-span-full sm:col-span-3">
 					<label htmlFor="ClotheUse" className="text-sm">Year Used</label>
 					<input id="ClotheUse" type="number" name='year' placeholder="Cloth  Resale price"className="w-full px-3 rounded-md h-12"  />
+				</div>
+        	<div className="col-span-full sm:col-span-3">
+					<label htmlFor="ClotheUse" className="text-sm">Description</label>
+					<textarea id="ClotheUse" type="number" name='year' placeholder="Description"className="w-full p-3 rounded-md "  />
 				</div>
       
 			 

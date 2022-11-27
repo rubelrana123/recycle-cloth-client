@@ -21,7 +21,7 @@ const MyProduct = () => {
         res.json()
       )
   })
- 
+  console.log("my product products", products);
    if(isLoading) {
     return <Spinner></Spinner>
   }
@@ -36,7 +36,8 @@ const MyProduct = () => {
         <th></th>
         <th>Image</th>
         <th>Name</th>
-        <th>Specially</th>
+        <th>Price</th>
+        <th>Advertise</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -62,10 +63,19 @@ const MyProduct = () => {
            {product?.product_name}
  
         </td>
-        <td>{product?.published_date}</td>
+           <td className='font-semibold'>
+           {product?.resale_price}
+ 
+        </td>
+           <td className='font-semibold'>
+             <button  className="btn btn-ghost rounded-md  border-2 border-red-800 text-error  btn-md">Advertise</button>
+ 
+        </td>
+                
+
         <th>
    
-           <button htmlFor="confirmModal"  className="btn btn-ghost bg-red-500  btn-xs">Delete</button>
+           <button  className="btn btn-ghost rounded-md  border-2 border-red-800 text-error  btn-error">Delete</button>
 
         </th>
       </tr>
