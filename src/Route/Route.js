@@ -12,23 +12,26 @@ import Blog from '../Pages/Blog/Blog';
 import EachCategory from '../Pages/Home/Category/EachCategory/EachCategory';
 import AllSeller from '../Pages/Dashboard/AllSeller/AllSeller';
 import AllBuyer from '../Pages/Dashboard/AllBuyer/AllBuyer';
+import PrivateRoute from './PrivateRoute';
+import AdminRoute from './AdminRoute';
+import MyProduct from '../Pages/Dashboard/MyProduct/MyProduct';
  
  export  const router = createBrowserRouter([ 
   { path: "/", element : <Main></Main>, errorElement : <ErrorPage/>, children : [
      { path : "/", element : <Home></Home>},
    { path : "/signup", element : <SignUp></SignUp>},
    { path : "/login", element : <Login></Login>},
-   { path : "/blog", element : <Blog></Blog>},
-   { path : "/category/:id", loader :async ({params}) => await fetch(`http://localhost:5000/category/${params.id}`), element : < EachCategory></ EachCategory>},
+   { path : "/blog", element : <PrivateRoute><Blog></Blog></PrivateRoute>},
+   { path : "/category/:id", loader :async ({params}) => await fetch(`http://localhost:5000/category/${params.id}`), element : <PrivateRoute>< EachCategory></ EachCategory></PrivateRoute>},
     
  ]},
  {
   path : "/dashboard", element : <DashboardLayout></DashboardLayout>, errorElement : <ErrorPage/> , children : [
     {path : "/dashboard", element : <MyOrder></MyOrder>},
-    {path : "/dashboard/myproduct", element : <MyOrder></MyOrder> },
+    {path : "/dashboard/myproduct", element : <MyProduct></MyProduct> },
     {path : "/dashboard/addproduct", element : <AddProduct></AddProduct> },
-    {path : "/dashboard/allseller", element : <AllSeller></AllSeller> },
-    {path : "/dashboard/allbuyer", element : <AllBuyer></AllBuyer> }
+    {path : "/dashboard/allseller", element : <AdminRoute><AllSeller></AllSeller></AdminRoute> },
+    {path : "/dashboard/allbuyer", element : <AdminRoute><AllBuyer></AllBuyer></AdminRoute> }
   ]
  }
  ])

@@ -26,10 +26,59 @@ const AllBuyer = () => {
 
 
   return (
-    <div>
-      <h1>All Buyer</h1>
+     <div>
+       <div>
+    <div className="overflow-x-auto">
+  <table className="table w-full">
+ 
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Pay</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      {
+        buyers &&
+        buyers?.map((buyer, i) => {
+          return (
+
+
+         <tr >
+        <th>{i + 1}</th>
+        <td>{buyer.product_name}</td>
+        <td> {buyer?.email}</td>
+        <td>
+           </td>
+        <td>  </td>
+         
+      </tr>
+
+
+
+
+          )
+        })
+      }
+     
+
+      
+     
+ 
+
+ 
+    </tbody>
+  </table>
+</div>
+    </div>
     </div>
   );
+ 
 };
 
 export default AllBuyer;

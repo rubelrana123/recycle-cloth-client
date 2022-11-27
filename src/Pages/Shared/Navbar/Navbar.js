@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
  import logo from "../../../asserts/Logo/Logo (2).png"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
  
 
 const Navbar = () => {
   const {user, signout} = useContext(AuthContext);
+  const navigate = useNavigate();
   console.log("username", user, user?.displayName);
   const handleLogOut = () => {
     signout().then( () => {
-
+      navigate("/")
       toast.success("Logout Successfully", {autoClose : 200});
       localStorage.removeItem("token");
     })

@@ -1,5 +1,5 @@
  
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
  
@@ -11,26 +11,25 @@ import UserToken from '../../../Hooks/UseToken';
  
 
 const Login = () => {
-	const {user, signin, googleSignin,forgetPassword } = useContext(AuthContext);
+	const {signin, googleSignin, loading, setLoading } = useContext(AuthContext);
   const [error, setError] = useState("");
-	// const [userEmail, setUserEmail] = useState('');
+ 
 	const location = useLocation();
 		const navigate = useNavigate();
 		const from = location?.state?.from.pathname || "/"
     const { register, formState: { errors },  handleSubmit } = useForm();
-   
-	  const [loginUserEmail, setloginUserEmail] = useState("");
-	 
- 
-	  const [token] = UserToken(loginUserEmail);
-		console.log( "email, token",  loginUserEmail,token );
-	  if(token) {
+    const [loginUserEmail, setloginUserEmail] = useState("");
+    const [token] = UserToken(loginUserEmail);
+		// console.log( "email, token",  loginUserEmail,token );
+    useEffect(() => {
+      	  if(token) {
 		navigate(from, {replace : true})
       
 	}
+    }, [token])
     const onSubmit = data =>{
-			 console.log(data)
-			 signin(data.email, data.password).then((userCredential) => {
+		console.log(data)
+		signin(data?.email, data?.password).then((userCredential) => {
     const user = userCredential.user;
 		setloginUserEmail(user?.email)
     console.log(user);
@@ -45,7 +44,7 @@ const Login = () => {
 		
 
 
-  });
+  }).finally( ()  => setLoading(false))
 
 		};
    
@@ -90,7 +89,7 @@ const Login = () => {
         .then(res => res.json())
         .then(data =>{
           if(data.acknowledged) {
-
+            
             setloginUserEmail(email);
             toast.success("post success")
           }

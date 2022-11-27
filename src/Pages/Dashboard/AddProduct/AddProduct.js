@@ -110,7 +110,7 @@ const AddProduct = () => {
                 id='image'
                 name='image'
                 accept='image/*'
-                // required
+                required
               />
               </div>
             
@@ -151,7 +151,7 @@ const AddProduct = () => {
       
 			 
 			</div>
-		 <button type="submit" className='w-full bg-primary py-3 rounded-sm ' > Add To Cart</button>
+		 <button type="submit" className='w-full bg-primary py-3 rounded-sm ' >Add To Cart</button>
 	
 	</form>
 </section>

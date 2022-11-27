@@ -52,13 +52,8 @@ const MyOrder = () => {
         <td>{order.product_name}</td>
         <td>200</td>
         <td>
-           
-            <button
-       
-         className='btn btn-xs bg-secondary'>Approve</button> </td>
-        <td> <button 
-       
-        className='btn btn-xs bg-red-400'>Delete</button> </td>
+             </td>
+        <td>  </td>
          
       </tr>
 
