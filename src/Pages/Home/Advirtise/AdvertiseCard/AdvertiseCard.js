@@ -26,7 +26,7 @@ const CategoryCard = ({product, setEachProduct}) => {
            
           <p className='flex gap-2 items-center'><CurrencyBangladeshiIcon className='h-5'></CurrencyBangladeshiIcon> <span>Original Price : {product?.original_price
            } BDT</span></p>
-          <p className='flex gap-2 items-center'><CurrencyBangladeshiIcon className='h-5'></CurrencyBangladeshiIcon> <span>Original Price : {product?.resale_price
+          <p className='flex gap-2 items-center'><CurrencyBangladeshiIcon className='h-5'></CurrencyBangladeshiIcon> <span>New Price : {product?.resale_price
            } BDT</span></p>
            <h2 className='flex gap-2 items-center'> <MapPinIcon className='h-5'></MapPinIcon> Location : {product?.location}</h2>
           <p className='flex gap-2 items-center'><BuildingStorefrontIcon className='h-5'></BuildingStorefrontIcon> <span>Used Year : {product.year_used}</span></p>
@@ -35,7 +35,7 @@ const CategoryCard = ({product, setEachProduct}) => {
             <UserIcon className='h-5'></UserIcon>
             <p>Seller : {product.seller_name}</p>
             {
-              !product?.verify &&
+              product?.verify &&
               <CheckBadgeIcon className='h-5 text-blue-600'></CheckBadgeIcon>
             }
           </p>

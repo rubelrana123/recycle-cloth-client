@@ -61,6 +61,24 @@ const AllSeller = () => {
 
     }
 
+  const handleMakeVerify =  (email) => {
+    console.log(email);
+     fetch(`http://localhost:5000/user/verify/${email}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success('Make Verify Confirmed', { autoClose: 500 })
+                refetch()
+            })
+
+
+  }
+
  if(isLoading) {
     return <Spinner></Spinner>
   }
@@ -92,13 +110,18 @@ const AllSeller = () => {
           return (
 
 
-         <tr >
+         <tr key={sellers._id}>
         <th>{i + 1}</th>
         <td>{seller.name}</td>
         <td>{seller?.email}</td>
         <td>
           
-   <button  className="btn btn-ghost rounded-md  border-2  text-error   btn-md border-primary">Verify</button>
+          { seller.verify ? 
+          
+          <button onClick={() => handleMakeVerify(seller?.email)}  className="text-success">Veried</button>
+             :
+               <button onClick={() => handleMakeVerify(seller?.email)}  className="btn btn-ghost rounded-md  border-2  text-error   btn-md border-primary">Verify</button>
+          }
          </td>
         <td> 
              <button onClick={() => handleDelete(seller?._id)}  className="btn btn-ghost rounded-md  border-2  text-error   btn-md border-primary">Delete</button>

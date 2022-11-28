@@ -24,7 +24,7 @@ const Home = () => {
         <Banner></Banner>
         <Category></Category>
         {
-          products.length &&
+         products.length > 0 &&
         <EachAdvertise products={products} refetch={refetch} isLoading={isLoading}></EachAdvertise>
         }
         <DisCount></DisCount>
