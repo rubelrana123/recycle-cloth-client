@@ -11,8 +11,8 @@ const EachCategory = () => {
   // console.log("hello",products);
   return (
 
-   <div className='mx-12  mt-8'>
-     <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4  '>
+   <div className='lg:mx-12 md:mx-10 mx-6 my-12  mt-8'>
+     <div className='grid md:grid-cols-1-2 grid-cols-1 lg:grid-cols-3 gap-8 '>
        
       {
         products?.map(product => {

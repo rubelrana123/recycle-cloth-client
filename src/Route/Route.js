@@ -25,7 +25,7 @@ import ReportedItem from '../Pages/Dashboard/ReportedItem/ReportedItem';
      { path : "/", element : <Home></Home>},
    { path : "/signup", element : <SignUp></SignUp>},
    { path : "/login", element : <Login></Login>},
-   { path : "/blog", element : <PrivateRoute><Blog></Blog></PrivateRoute>},
+   { path : "/blog", element : <><Blog></Blog></>},
    { path : "/category/:id", loader :async ({params}) => await fetch(`http://localhost:5000/category/${params.id}`), element : <PrivateRoute>< EachCategory></ EachCategory></PrivateRoute>},
     
  ]},

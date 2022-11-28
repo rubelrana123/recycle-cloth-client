@@ -8,7 +8,7 @@ const CategoryCard = ({product, setEachProduct}) => {
  
   return (
     <div>
-      <div className="card w-96 bg-red-50 shadow-xl"> 
+      <div className="card max-w-sm rounded overflow-hidden bg-red-50 shadow-xl"> 
             <figure><img src={product?.image} alt="product" className="w-full object-fill  h-72  bg-white  rounded-md " /></figure>
  
   <div className="px-2">
