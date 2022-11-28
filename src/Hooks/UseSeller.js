@@ -5,7 +5,7 @@ const UseSeller = (email) => {
   const [sellerLoading, setSellerLoading] = useState(true);
  useEffect(() => {
       if(email) {
-         fetch(`http://localhost:5000/user/seller/${email}`).then(res => res.json()).then(data => {
+         fetch(`https://recycle-cloth-server.vercel.app/user/seller/${email}`).then(res => res.json()).then(data => {
           console.log("check Seller", data?.isSeller);
           setSeller(data?.isSeller);
          setSellerLoading(false);

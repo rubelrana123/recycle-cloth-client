@@ -1,17 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import SmallSpinner from '../../../components/SmallSpinner';
-
+const axios = require('axios');
 const ReportedItem = () => {
  
-
     const {data : reporteditems = [], refetch, isLoading} = useQuery({
     queryKey : ["reporteditems"],
      queryFn : async () => { 
         
       try {
-     const res = await fetch('http://localhost:5000/product/report', {
+     const res = await fetch('https://recycle-cloth-server.vercel.app/product/report', {
        headers : {
         authorization : `bearer ${localStorage.getItem('token')}`
       },
@@ -31,7 +30,7 @@ const ReportedItem = () => {
 
    const handleDelete = id => {
     console.log(id);
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://recycle-cloth-server.vercel.app/product/${id}`, {
       method: 'DELETE',
       headers : {
           authorization : `bearer ${localStorage.getItem('token')}`

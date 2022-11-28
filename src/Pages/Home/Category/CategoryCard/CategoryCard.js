@@ -8,7 +8,7 @@ const CategoryCard = ({product, setEachProduct}) => {
   console.log("object", product);
     const handleReported = (id) => {
      console.log(id);
-      fetch(`http://localhost:5000/product/report/${id}`, {
+      fetch(`https://recycle-cloth-server.vercel.app/product/report/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`
@@ -26,7 +26,7 @@ const CategoryCard = ({product, setEachProduct}) => {
   return (
     <div>
       <div className="card max-w-sm rounded overflow-hidden   bg-red-50 shadow-xl"> 
-            <figure><img src={product?.image} alt="product" className="w-full object-fill   bg-white  rounded-md " /></figure>
+            <figure><img src={product?.image} alt="product" className="w-full object-fill h-72  bg-white  rounded-md " /></figure>
  
   <div className="px-2">
        <div className='flex justify-between'>

@@ -64,7 +64,7 @@ const AddProduct = () => {
      }
 
      const saveProduct = (product, form) => {
-      fetch("http://localhost:5000/product", {
+      fetch("https://recycle-cloth-server.vercel.app/product", {
       method : 'POST',
       headers : {
         'content-type' : "application/json",

@@ -10,7 +10,7 @@ const Home = () => {
      const {data : products =[],refetch, isLoading} = useQuery({
     queryKey: ['products'],
     queryFn: () =>
-      fetch(`http://localhost:5000/advertise`,{
+      fetch(`https://recycle-cloth-server.vercel.app/advertise`,{
          headers : {
                 authorization : `bearer ${localStorage.getItem('token')}`
               }   }

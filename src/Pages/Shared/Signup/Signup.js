@@ -5,11 +5,14 @@ import Spinner from "../../../components/Spinner"
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import UserToken from '../../../Hooks/UseToken';
+import SmallSpinner from '../../../components/SmallSpinner';
 
  
  
 const SignUp = () => {
   const { register, formState: { errors },  handleSubmit } = useForm();
+  const [error, setError] = useState("");
+
   const {createUser, googleSignin, loading,setLoading, profileUpdate} = useContext(AuthContext);
   const navigate = useNavigate();
   const [userCredentialEmail, setUserCredentialEmail] = useState('');
@@ -37,8 +40,10 @@ const SignUp = () => {
     }).then(res => res.json())
       .then(imageData =>{ 
         console.log(imageData);
+        setLoading(true)
         createUser(data.email, data.password)
           .then(result => { 
+            setLoading(true)
             const user = result?.user;
             console.log(result);
             console.log(imageData.data.url);
@@ -51,16 +56,25 @@ const SignUp = () => {
               setUserCredentialEmail(user?.email);
               saveUser(data.name, data.email, data.accountType)
               toast.success("profileupdate");
+              	setError(" ")
+                 setLoading(false)
               // navigate("/")
-            }).catch(error => console.log(error))
+            }).catch(error =>{
+              const errorMessage = error.message;
+             setError(errorMessage);
+              console.log(error)
+            
+            })
             
 
 
 
           }).catch(error => {
             console.log("line 27 signup", error)
-             setLoading(false)
-          })
+             const errorMessage = error.message;
+             setError(errorMessage);
+              
+          }).finally ( () => setLoading(false))
 
 
        }) 
@@ -82,7 +96,7 @@ const SignUp = () => {
 				// Handle Errors here.
 				const errorCode = error.code;
 				const errorMessage = error.message;
-				
+				setError(error)
 				 console.log(errorMessage);
 				// ...
 			});
@@ -96,7 +110,7 @@ const SignUp = () => {
       name , email, role : "Buyer"
     }
 
-      fetch('http://localhost:5000/user', {
+      fetch('https://recycle-cloth-server.vercel.app/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -119,7 +133,7 @@ const SignUp = () => {
      const saveUser = (name, email, role) =>{
         const user ={name, email, role};
         console.log("saveuser", user);
-        fetch('http://localhost:5000/user', {
+        fetch('https://recycle-cloth-server.vercel.app/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -138,7 +152,7 @@ const SignUp = () => {
 
    
     if(loading) {
-      return <Spinner/>
+      return <SmallSpinner/>
     }
 
   return (
@@ -193,6 +207,7 @@ const SignUp = () => {
 
 
    
+				{error && <p className='text-red-400'>{error}</p>}
         
       <input type="submit" className='my-3 py-3 rounded-md border-0 text-white w-full bg-primary hover:bg-blue-400 cursor-pointer text-xl font-semibold' value="Sign Up" />
  

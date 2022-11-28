@@ -36,7 +36,7 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
  
     }
     console.log(booking);
-    fetch("http://localhost:5000/booking", {
+    fetch("https://recycle-cloth-server.vercel.app/booking", {
       method : 'POST',
       headers : {
         'content-type' : "application/json",

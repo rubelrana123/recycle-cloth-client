@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
+import Spinner from '../../../components/Spinner';
 
 const AllBuyer = () => {
 
@@ -9,7 +11,7 @@ const AllBuyer = () => {
      queryFn : async () => { 
         
       try {
-     const res = await fetch('http://localhost:5000/user?role=Buyer', {
+     const res = await fetch('https://recycle-cloth-server.vercel.app/user?role=Buyer', {
        headers : {
         authorization : `bearer ${localStorage.getItem('token')}`
       },
@@ -27,6 +29,26 @@ const AllBuyer = () => {
 
   }) 
    console.log(buyers);
+
+    if(isLoading) {
+      return <Spinner></Spinner>
+    } 
+
+ const handleDelete = id => {
+    console.log(id);
+    fetch(`https://recycle-cloth-server.vercel.app/user/${id}`, {
+      method: 'DELETE',
+      headers : {
+          authorization : `bearer ${localStorage.getItem('token')}`
+      }  
+    })
+    .then(res => res.json()) // or res.json()
+    .then(data => {
+      refetch();
+      toast.success("Delete User Successfully")
+        console.log(data);
+    })
+  }
 
 
   return (
@@ -57,7 +79,7 @@ const AllBuyer = () => {
         <td>{buyer.product_name}</td>
         <td> {buyer?.email}</td>
         <td> 
-          <button  className="btn btn-ghost rounded-md  border-2  text-error   btn-md border-primary">Delete</button>
+          <button onClick={() => handleDelete(buyer?._id)}  className="btn btn-ghost rounded-md  border-2  text-error   btn-md border-primary">Delete</button>
 
         </td>
          

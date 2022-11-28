@@ -1,8 +1,12 @@
 # RecycleCoth Website
 
 A Cloth Resale E-commerce  Website .
-Admin : web@gmail.com
+Admin : admin@gmail.com
 Password : Aa!111
+
+Seller : seller@gmail.com
+Password : Aa!111
+
 
 ## Live Link
 Hosted in firebase -> [Recycle Cloth](https://recycle-clothh.web.app//)

@@ -25,7 +25,7 @@ const Navbar = () => {
         user?.uid ? <>    
            <li><Link to="/dashboard">DashBoard</Link></li>
            <li><Link onClick={handleLogOut} >Logout</Link></li>
-             <p>{user?.displayName}</p>
+            
             
 					   
              <div className="avatar  m-3 items-center flex">

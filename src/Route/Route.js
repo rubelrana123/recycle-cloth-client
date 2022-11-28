@@ -26,7 +26,7 @@ import ReportedItem from '../Pages/Dashboard/ReportedItem/ReportedItem';
    { path : "/signup", element : <SignUp></SignUp>},
    { path : "/login", element : <Login></Login>},
    { path : "/blog", element : <><Blog></Blog></>},
-   { path : "/category/:id", loader :async ({params}) => await fetch(`http://localhost:5000/category/${params.id}`), element : <PrivateRoute>< EachCategory></ EachCategory></PrivateRoute>},
+   { path : "/category/:id", loader :async ({params}) => await fetch(`https://recycle-cloth-server.vercel.app/category/${params.id}`), element : <PrivateRoute>< EachCategory></ EachCategory></PrivateRoute>},
     
  ]},
  {
@@ -37,7 +37,7 @@ import ReportedItem from '../Pages/Dashboard/ReportedItem/ReportedItem';
     {path : "/dashboard/allseller", element : <AdminRoute><AllSeller></AllSeller></AdminRoute> },
     {path : "/dashboard/allbuyer", element : <AdminRoute><AllBuyer></AllBuyer></AdminRoute> },
     {path : "/dashboard/reporteditem", element : <AdminRoute><ReportedItem></ReportedItem></AdminRoute> },
-    {path : "/dashboard/payment/:id", element : <><Payment></Payment></> , loader :  async({params}) => await  fetch(`http://localhost:5000/booking/${params.id}`) }
+    {path : "/dashboard/payment/:id", element : <><Payment></Payment></> , loader :  async({params}) => await  fetch(`https://recycle-cloth-server.vercel.app/booking/${params.id}`) }
   ]
  }
  ])

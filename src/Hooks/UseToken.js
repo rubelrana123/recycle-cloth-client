@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
       console.log("useloken", email);
       const [token ,setToken] = useState("");
       useEffect (() => {
-        if(email) {
-          
-          fetch(`http://localhost:5000/jwt?email=${email}`
+        if(email) { 
+          fetch(`https://recycle-cloth-server.vercel.app/jwt?email=${email}`
      
+           
           ).then(res => res.json()).then(data=>{
       if(data.accessToken) {
          

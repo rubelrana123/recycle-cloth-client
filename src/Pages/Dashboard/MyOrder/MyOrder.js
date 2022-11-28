@@ -11,7 +11,7 @@ const MyOrder = () => {
     const {data : orders =[],refetch, isLoading} = useQuery({
     queryKey: ['bookings', user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/booking?email=${user?.email}`,{
+      fetch(`https://recycle-cloth-server.vercel.app/booking?email=${user?.email}`,{
          headers : {
                 authorization : `bearer ${localStorage.getItem('token')}`
               }   }
@@ -24,7 +24,7 @@ const MyOrder = () => {
 
    const handleDelete = id => {
     console.log(id);
-    fetch(`http://localhost:5000/booking/${id}`, {
+    fetch(`https://recycle-cloth-server.vercel.app/booking/${id}`, {
       method: 'DELETE',
       headers : {
           authorization : `bearer ${localStorage.getItem('token')}`

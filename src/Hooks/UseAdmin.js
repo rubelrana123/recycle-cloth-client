@@ -6,7 +6,7 @@ const UseAdmin = (email) => {
   console.log("admin email", email);
  useEffect(() => {
       if(email) {
-         fetch(`http://localhost:5000/user/admin/${email}`).then(res => res.json()).then(data => {
+         fetch(`https://recycle-cloth-server.vercel.app/user/admin/${email}`).then(res => res.json()).then(data => {
           console.log("check admin", data?.isAdmin);
           setAdmin(data?.isAdmin);
          setadminLoading(false);

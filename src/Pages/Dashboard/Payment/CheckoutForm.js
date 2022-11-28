@@ -17,7 +17,7 @@ const CheckoutForm = ({booking}) => {
   console.log(success, transtitionId);
     useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://recycle-cloth-server.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
          "Content-Type": "application/json",
@@ -91,7 +91,7 @@ if(paymentIntent.status === "succeeded") {
             }
             console.log(payment);
             
-            fetch('http://localhost:5000/payments', {
+            fetch('https://recycle-cloth-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -103,6 +103,7 @@ if(paymentIntent.status === "succeeded") {
                 .then(data => {
                     console.log(data);
                     if (data.insertedId) {
+                      toast.success("Payment Succcessfully", {autoClose : 200})
                          setSuccess ("Your Payment SuccessFully !!");
                            setTranstitionId(paymentIntent?.id);
                     }

@@ -9,7 +9,7 @@ const AllSeller = () => {
      queryFn : async () => { 
         
       try {
-     const res = await fetch('http://localhost:5000/user?role=Seller', {
+     const res = await fetch('https://recycle-cloth-server.vercel.app/user?role=Seller', {
        headers : {
         authorization : `bearer ${localStorage.getItem('token')}`
       },
@@ -31,7 +31,7 @@ const AllSeller = () => {
    console.log(sellers);
  const handleDelete = id => {
     console.log(id);
-    fetch(`http://localhost:5000/user/${id}`, {
+    fetch(`https://recycle-cloth-server.vercel.app/user/${id}`, {
       method: 'DELETE',
       headers : {
           authorization : `bearer ${localStorage.getItem('token')}`
@@ -46,7 +46,7 @@ const AllSeller = () => {
   }
 
   const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/user/admin/${id}`, {
+        fetch(`https://recycle-cloth-server.vercel.app/user/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`
@@ -63,7 +63,7 @@ const AllSeller = () => {
 
   const handleMakeVerify =  (email) => {
     console.log(email);
-     fetch(`http://localhost:5000/user/verify/${email}`, {
+     fetch(`https://recycle-cloth-server.vercel.app/user/verify/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`
@@ -97,8 +97,8 @@ const AllSeller = () => {
         <th>Name</th>
         <th>Email</th>
         <th>Verify</th>
-        <th>Make Admin</th>
         <th>Delete</th>
+        <th>Make Admin</th>
       </tr>
     </thead>
     <tbody>

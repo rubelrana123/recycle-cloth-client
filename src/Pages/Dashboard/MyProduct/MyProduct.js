@@ -7,13 +7,13 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const MyProduct = () => {
   const {user} = useContext(AuthContext);
-  // const url = http://localhost:5000/product?email=rubelranatpi707458@gmail.com
+  // const url = https://recycle-cloth-server.vercel.app/product?email=rubelranatpi707458@gmail.com
   
   
    const {data : products =[],refetch, isLoading} = useQuery({
     queryKey: ['products', user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/product?email=${user?.email}`,{
+      fetch(`https://recycle-cloth-server.vercel.app/product?email=${user?.email}`,{
          headers : {
                 authorization : `bearer ${localStorage.getItem('token')}`
               }   }
@@ -25,7 +25,7 @@ const MyProduct = () => {
 
 const handleDelete = id => {
     console.log(id);
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://recycle-cloth-server.vercel.app/product/${id}`, {
       method: 'DELETE',
       headers : {
           authorization : `bearer ${localStorage.getItem('token')}`
@@ -43,7 +43,7 @@ const handleDelete = id => {
 
 
  const handleAdvertise = id => {
-        fetch(`http://localhost:5000/product/${id}`, {
+        fetch(`https://recycle-cloth-server.vercel.app/product/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`

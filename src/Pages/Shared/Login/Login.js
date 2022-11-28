@@ -79,7 +79,7 @@ const Login = () => {
       name , email, role : "Buyer"
     }
 
-      fetch('http://localhost:5000/user', {
+      fetch('https://recycle-cloth-server.vercel.app/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -91,7 +91,7 @@ const Login = () => {
           if(data.acknowledged) {
             
             setloginUserEmail(email);
-            toast.success("post success")
+            toast.success("post success");
           }
             console.log("social login data", data);
         })

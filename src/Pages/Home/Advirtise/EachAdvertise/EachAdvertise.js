@@ -13,13 +13,13 @@ const EachAdvertise = ({products, refetch, isLoading}) => {
 
    console.log(products);
   return (
-       <div className='py-8' >
+       <div className='py-8 lg:mx-16  md:mx-10 mx-6' >
     <div className='text-start'>
       
-      <h2 className="text-5xl mx-16 my-10 font-semibold">Our Advertise Product</h2>
+      <h2 className="text-5xl  my-10 font-semibold">Our Advertise Product</h2>
  
     </div>
-     <div className='grid md:grid-cols-1-2 grid-cols-1 lg:grid-cols-3 mx-20 gap-8'>
+     <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3  lg:gap-8 gap-4'>
       {
          products?.map(product => {
           return <AdvertiseCard key={product._id}
