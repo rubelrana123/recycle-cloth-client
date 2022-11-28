@@ -54,6 +54,7 @@ const AddProduct = () => {
           seller_email: user?.email,
           seller_verify : false,
           advertise : false,
+          paid : false
        }
        saveProduct(AddProduct, form);
        console.log("All Product", AddProduct);
@@ -87,20 +88,20 @@ const AddProduct = () => {
  
         	<div className="col-span-full sm:col-span-3">
 					<label htmlFor="sellerName" className="text-sm">Seller Name</label>
-					<input id="sellerName" type="text" name='name'  defaultValue={user?.displayName} disabled  placeholder="Name" className="w-full px-3  rounded-md h-12"  /> 
+					<input id="sellerName" type="text" name='name'  defaultValue={user?.displayName} disabled  placeholder="Name" className="w-full px-3  rounded-md h-12"  required/> 
 				</div>
 				<div className="col-span-3">
 					<label htmlFor="address" className="text-sm">Mobile Number</label>
-					<input id="address" type="number" name='phonenumber' placeholder="Seller mobile number" className="w-full px-3 rounded-md h-12"  />
+					<input id="address" type="number" name='phonenumber' placeholder="Seller mobile number" className="w-full px-3 rounded-md h-12" required />
 				</div>
 				<div className="col-span-3">
 					<label htmlFor="address" className="text-sm">Location</label>
-					<input id="address" type="text"  name='location' placeholder="Location"className="w-full rounded-md h-12 px-3"  />
+					<input id="address" type="text"  name='location' placeholder="Location"className="w-full rounded-md h-12 px-3"  required />
 				</div>
 
 				<div className="col-span-full sm:col-span-3">
 					<label htmlFor="productname" className="text-sm">Cloth name</label>
-					<input id="Clothname" name='clothName' type="text" placeholder="Cloth name" className=" px-3 w-full rounded-md h-12 cursor-pointer" />
+					<input id="Clothname" name='clothName' type="text" placeholder="Cloth name" className=" px-3 w-full rounded-md h-12 cursor-pointer" required />
            
 				</div>
 				<div className="col-span-full   sm:col-span-3">
@@ -123,15 +124,15 @@ const AddProduct = () => {
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label htmlFor="ClothoriginalPrice" className="text-sm">Cloth Original Price</label>
-					<input id="ClothoriginalPrice" name="originalPrice" type="text" placeholder="Cloth Original price"className="w-full px-3 rounded-md h-12"  />
+					<input id="ClothoriginalPrice" name="originalPrice" type="text" placeholder="Cloth Original price"className="w-full px-3 rounded-md h-12" required  />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label htmlFor="ClotheresellPrice" className="text-sm">Cloth Resale Price</label>
-					<input id="ClotheresellPrice" type="text" name='resalePrice' placeholder="Cloth  Resale price"className="w-full px-3 rounded-md h-12"  />
+					<input id="ClotheresellPrice" type="text" name='resalePrice' placeholder="Cloth  Resale price"className="w-full px-3 rounded-md h-12" required />
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label htmlFor="Clothcondition"  className="text-sm">Cloth Condition</label>
-					     <select name="condition" className="select bg-white select-ghost border-1 input-bordered w-full  ">
+					     <select name="condition" className="select bg-white select-ghost border-1 input-bordered w-full " required>
                <option selected>Good</option>
                <option >Excellent</option>
                <option >Medium</option>
@@ -141,7 +142,7 @@ const AddProduct = () => {
 				</div>
 				<div className="col-span-full sm:col-span-3">
 					<label htmlFor="ClothPrice" className="text-sm">Cloth Category</label>
-					      <select name='category' className="select bg-white  select-ghost border-1 input-bordered w-full  ">
+					      <select name='category' className="select bg-white  select-ghost border-1 input-bordered w-full" required>
            <option value="01" selected>shirt</option>
      
                <option value="02" >Jeans</option>
@@ -151,15 +152,15 @@ const AddProduct = () => {
 				</div>
         	<div className="col-span-full sm:col-span-3">
 					<label htmlFor="Clotheyearpurchase" className="text-sm">Year of Purchase</label>
-					<input id="Clotheyearpurchase" type="number" name='yearpurchase' placeholder="Cloth  Resale price"className="w-full px-3 rounded-md h-12"  />
+					<input id="Clotheyearpurchase" type="number" name='yearpurchase' placeholder="Cloth  Resale price"className="w-full px-3 rounded-md h-12" required />
 				</div>
         	<div className="col-span-full sm:col-span-3">
 					<label htmlFor="ClotheUse" className="text-sm">Year of Use</label>
-					<input id="ClotheUse" type="number" name='yearuse' placeholder="Cloth  Resale price"className="w-full px-3 rounded-md h-12"  />
+					<input id="ClotheUse" type="number" name='yearuse' placeholder="Cloth  Resale price"className="w-full px-3 rounded-md h-12" required />
 				</div>
         	<div className="col-span-full sm:col-span-3">
 					<label htmlFor="Clothdescription" className="text-sm">Description</label>
-					<textarea id="Clothdescription" type="number" name='discription' placeholder="Description" className="w-full bg-white p-3 rounded-md "  />
+					<textarea id="Clothdescription" type="number" name='discription' placeholder="Description" className="w-full bg-white p-3 rounded-md " required />
 				</div>
       
 			 

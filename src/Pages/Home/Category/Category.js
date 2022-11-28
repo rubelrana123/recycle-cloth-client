@@ -1,10 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-
-import shirt from "../../../asserts/categoryImage/shirt.png";
-import jaket from "../../../asserts/categoryImage/jacket.png";
-import pants from "../../../asserts/categoryImage/pants.png";
-import Spinner from '../../../components/Spinner';
+import SmallSpinner from '../../../components/SmallSpinner';
 import { Link } from 'react-router-dom';
 
 const Category = () => {
@@ -29,7 +25,7 @@ const Category = () => {
   })
    console.log(categories) 
    if(isLoading) {
-    return <Spinner></Spinner>
+    return <SmallSpinner></SmallSpinner>
    }
 
   return (
@@ -73,30 +69,3 @@ const Category = () => {
 export default Category;
 
 
-/* 
- <div className='flex rounded-lg gap-4 flex-row  justify-between card text-white  md:card-side shadow-xl      bg-gradient-to-r from-primary to-secondary'>
-        <div className='w-1/2  flex justify-center'>
-            <figure>
-                <img src={jaket} alt="Jacket" className='h-24 w-full' />
-            </figure>
-        </div>
-        <div className=' w-1/2 items-center flex ' >
-          
-          <p className='text-4xl font-bold'>Jacket</p>
-          
-        </div>
-      </div>
-      <div className='flex rounded-lg gap-4 flex-row  justify-between card text-white  md:card-side shadow-xl       bg-gradient-to-r from-primary to-secondary'>
-        <div className='w-1/2  flex justify-center'>
-            <figure>
-                <img src={pants} alt="pants" className='h-24 w-full' />
-            </figure>
-        </div>
-        <div className=' w-1/2 items-center flex ' >
-          
-          <p className='text-4xl font-bold'>Jeans</p>
-          
-        </div>
-      </div>
-
-*/

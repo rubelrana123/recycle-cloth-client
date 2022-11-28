@@ -116,8 +116,8 @@ if(paymentIntent.status === "succeeded") {
 //   return <Loading></Loading>
 // }
   return (
-    <div>
-           <form onSubmit={handleSubmit}>
+    <div className=' bg-gray-200 py-12'>
+           <form  onSubmit={handleSubmit}>
       <CardElement
         options={{
           style: {
@@ -134,7 +134,7 @@ if(paymentIntent.status === "succeeded") {
           },
         }}
       />
-      <button type="submit" className='btn btn-primary border-2' disabled={!stripe || !clientSecret || isprocessing  }>
+      <button type="submit" className='btn mt-8 px-8 rounded-sm btn-primary border-2' disabled={!stripe || !clientSecret || isprocessing  }>
         Pay
       </button>
     </form>

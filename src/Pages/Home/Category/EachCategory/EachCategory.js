@@ -8,7 +8,7 @@ import CategoryCard from '../CategoryCard/CategoryCard';
 const EachCategory = () => {
   const [eachProduct, setEachProduct] = useState(null);
   const products = useLoaderData();
-  console.log("hello",products);
+  // console.log("hello",products);
   return (
 
    <div className='mx-12  mt-8'>

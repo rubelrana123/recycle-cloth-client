@@ -143,7 +143,7 @@ const Login = () => {
               {errors.password && <p className='text-red-400'>{errors.password?.message}</p>}
 
         </div>
-				{error && <p>{error}</p>}
+				{error && <p className='text-red-400'>{error}</p>}
          <Link className='' >Forget password</Link>
       <input type="submit" className='btn my-3  w-full bg-secondary' />
         <div>

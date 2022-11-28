@@ -1,40 +1,51 @@
-import { ArrowRightIcon, StarIcon } from '@heroicons/react/24/solid';
+import { ArrowRightIcon, BuildingStorefrontIcon, CalendarIcon, CheckBadgeIcon, ExclamationTriangleIcon, MapPinIcon, StarIcon, UserIcon } from '@heroicons/react/24/solid';
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import BookingModal from '../BokkingModal/BookingModal';
+ import { BeakerIcon } from '@heroicons/react/24/solid'
 
 const CategoryCard = ({product, setEachProduct}) => {
   console.log("object", product);
  
   return (
     <div>
-      <div className="card w-full bg-red-50 shadow-xl">
-  <figure><img src={product?.image} className="w-full  bg-white  rounded-md h-72" alt="products" /></figure>
- <div className='flex gap-1 pl-2'>
-      <h2>Date : {product.published_date}</h2>
-      <h2 className='ml-2'>Location : {product.location}</h2>
-      
-  </div>
+      <div className="card w-96 bg-red-50 shadow-xl"> 
+            <figure><img src={product?.image} alt="product" className="w-full object-fill  h-72  bg-white  rounded-md " /></figure>
+ 
   <div className="px-2">
-     <h2 className="card-title ">
+       <div className='flex justify-between'>
+        <h2 className="card-title ">
        {product.product_name} 
       <div className="badge badge-base">{product.product_condition}</div>
 
        </h2>
+       <h2 className='text-error flex gap-2 items-center'> <ExclamationTriangleIcon className='h-4 w-4'></ExclamationTriangleIcon><span className='text-sm'>Report to Admin</span></h2>
+       </div>
 
       
        <div>
-          <p>Used : {product.year_used}</p>
+           
+          <p>Original Price : {product.year_used}</p>
+           <h2 className='flex gap-2 items-center'> <MapPinIcon className='h-5'></MapPinIcon> Location : {product?.location}</h2>
+          <p className='flex gap-2 items-center'><BuildingStorefrontIcon className='h-5'></BuildingStorefrontIcon> <span>Used Year : {product.year_used}</span></p>
+         <h2 className='flex gap-2 items-center'><CalendarIcon className='h-5'></CalendarIcon> <span>Post Date : {product.published_date}</span></h2>
+          <p className='flex'>
+            <UserIcon className='h-5'></UserIcon>
+            <p>Seller : {product.seller_name}</p>
+            {
+              !product?.verify &&
+              <CheckBadgeIcon className='h-5 text-blue-600'></CheckBadgeIcon>
+            }
+          </p>
 
        </div>
-    <div className="card-actions justify-end">
+    <div className="card-actions justify-start">
       
        <label
        onClick={() => setEachProduct(product)}
         htmlFor="booking-modal" 
         className="btn btn-primary rounded-md text-white"
      >Book Now</label> 
-      {/* <button className='bg-primary py-3 px-2 rounded-sm text-white'>Book Now</button> */}
+      
     </div>
   </div>
 </div>

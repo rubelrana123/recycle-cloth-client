@@ -19,7 +19,7 @@ const Payment = () => {
   console.log(data);
   return (
     <div>
-      <p>Payment for {data?.product_name}</p>
+      <p className='text-4xl font-semibold'>Payment for {data?.product_name}</p>
       <p>  </p>
       <div className='  mt-8'>
       <Elements  stripe={stripePromise}> 

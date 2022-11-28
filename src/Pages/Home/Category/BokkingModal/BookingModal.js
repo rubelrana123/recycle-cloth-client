@@ -30,7 +30,8 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
       email : email,
       phone : phone,
       location :  location,
-      date : date
+      date : date,
+      paid : false
        
  
     }
@@ -68,8 +69,8 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
       <input type="text" name="email"  disabled  defaultValue={user?.email}  placeholder="Type Your Name" className="input input-bordered w-full " />
        
       <input type="name" name="price" disabled  defaultValue= {eachProduct?.resale_price}    className="input input-bordered w-full " />
-    <input type="text" name='location' placeholder="Meeting Location" className="input input-bordered w-full " />
-      <input type="number"  name="phone"   placeholder="Phone number +8801*********" className="input input-bordered w-full " />
+    <input type="text" name='location' placeholder="Meeting Location" className="input input-bordered w-full" required />
+      <input type="number"  name="phone"   placeholder="Phone number +8801*********" className="input input-bordered w-full " required/>
       <input type="submit" placeholder="Type here" className="input input-bordered btn btn-accent w-full " />
     </form>
   </div>
