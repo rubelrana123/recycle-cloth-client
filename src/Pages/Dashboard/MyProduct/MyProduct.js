@@ -23,7 +23,21 @@ const MyProduct = () => {
       )
   })
 
-
+const handleDelete = id => {
+    console.log(id);
+    fetch(`http://localhost:5000/product/${id}`, {
+      method: 'DELETE',
+      headers : {
+          authorization : `bearer ${localStorage.getItem('token')}`
+      }  
+    })
+    .then(res => res.json()) // or res.json()
+    .then(data => {
+      refetch();
+      toast.success("Delete User Successfully")
+        console.log(data);
+    })
+  }
 
 
 
@@ -118,7 +132,7 @@ const MyProduct = () => {
 
         <th>
    
-           <button  className="btn btn-ghost rounded-md  border-2 border-red-800 text-error  btn-error">Delete</button>
+           <button onClick={() => handleDelete(product._id)} className="btn btn-ghost rounded-md  border-2 border-red-800 text-error  btn-error">Delete</button>
 
         </th>
       </tr>
