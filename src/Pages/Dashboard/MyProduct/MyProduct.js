@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 
 import Spinner from '../../../components/Spinner';
 import { AuthContext } from '../../../Contexts/AuthProvider';
@@ -9,7 +10,7 @@ const MyProduct = () => {
   // const url = http://localhost:5000/product?email=rubelranatpi707458@gmail.com
   
   
-   const {data : products =[], isLoading} = useQuery({
+   const {data : products =[],refetch, isLoading} = useQuery({
     queryKey: ['products', user?.email],
     queryFn: () =>
       fetch(`http://localhost:5000/product?email=${user?.email}`,{
@@ -21,6 +22,39 @@ const MyProduct = () => {
         res.json()
       )
   })
+
+
+
+
+
+
+ const handleAdvertise = id => {
+        fetch(`http://localhost:5000/product/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success('Make Advertise products', { autoClose: 500 })
+                refetch()
+            })
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
   console.log("my product products", products);
    if(isLoading) {
     return <Spinner></Spinner>
@@ -68,7 +102,16 @@ const MyProduct = () => {
  
         </td>
            <td className='font-semibold'>
-             <button  className="btn btn-ghost rounded-md  border-2 border-red-800 text-error  btn-md">Advertise</button>
+        {
+              product.advertise ?
+              <button onClick={() => {handleAdvertise(product?._id)}}  className=" disabled:  text-error  btn-md">Advertised</button>
+              
+              :
+              <button onClick={() => {handleAdvertise(product?._id)}}  className="btn btn-ghost rounded-md  border-2 border-red-800 text-error  btn-md">Advertise</button>
+
+              
+}
+     
  
         </td>
                 
