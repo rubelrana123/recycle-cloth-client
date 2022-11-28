@@ -15,7 +15,7 @@ const ErrorPage = () => {
 			<h2 className="mb-8 font-extrabold text-9xl dark:text-gray-600">
 				<span className="sr-only">Error</span>{error?.status}
 			</h2>
-			<p className="text-2xl font-semibold md:text-3xl">{error?.message}</p>
+			<p className="text-2xl font-semibold text-black md:text-3xl">{error?.message}</p>
 			<p className="mt-4 mb-8 dark:text-gray-400">But dont worry, you can find plenty of other things on our homepage.</p>
 			<Link rel="noopener noreferrer" to = "/" className="px-8 py-3 font-semibold rounded bg-primary dark:text-gray-900">Back to homepage</Link>
 		</div>

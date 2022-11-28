@@ -145,7 +145,7 @@ const Login = () => {
         </div>
 				{error && <p className='text-red-400'>{error}</p>}
          <Link className='' >Forget password</Link>
-      <input type="submit" className='my-3 py-3 rounded-md border-0 text-white w-full bg-primary text-xl font-semibold' />
+      <input type="submit" className='my-3 cursor-pointer py-3 rounded-md border-0 text-white w-full bg-primary text-xl font-semibold' />
         <div>
           <p className="text-xs text-center sm:px-6 dark:text-gray-400">New to Recycle Cloth??
 		<Link to="/signup" className="underline text-primary">create an account</Link>
