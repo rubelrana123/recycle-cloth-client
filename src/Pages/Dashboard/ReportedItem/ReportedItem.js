@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 import SmallSpinner from '../../../components/SmallSpinner';
 
 const ReportedItem = () => {
  
 
-          const {data : reporteditems, isLoading} = useQuery({
+    const {data : reporteditems = [], refetch, isLoading} = useQuery({
     queryKey : ["reporteditems"],
      queryFn : async () => { 
         
@@ -27,6 +28,22 @@ const ReportedItem = () => {
      }
 
   }) 
+
+   const handleDelete = id => {
+    console.log(id);
+    fetch(`http://localhost:5000/product/${id}`, {
+      method: 'DELETE',
+      headers : {
+          authorization : `bearer ${localStorage.getItem('token')}`
+      }  
+    })
+    .then(res => res.json())  
+    .then(data => {
+      refetch();
+      toast.success("Delete Product Successfully")
+        console.log(data);
+    })
+  }
 
   if(isLoading) {
     return <SmallSpinner></SmallSpinner>
@@ -72,7 +89,7 @@ const ReportedItem = () => {
         <td>{reporteditem?.product_name}</td>
         <td> {reporteditem?.seller_email}</td>
         <td> 
-          <button  className="btn btn-ghost rounded-md  border-2  text-error   btn-md border-primary">Delete</button>
+          <button onClick={() => handleDelete(reporteditem._id)}  className="btn btn-ghost rounded-md  border-2  text-error   btn-md border-primary">Delete</button>
 
         </td>
          
