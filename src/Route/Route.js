@@ -17,6 +17,7 @@ import AdminRoute from './AdminRoute';
 import MyProduct from '../Pages/Dashboard/MyProduct/MyProduct';
 import UseSeller from '../Hooks/UseSeller';
 import Payment from '../Pages/Dashboard/Payment/Payment';
+import SellerRoute from './SellerRoute';
  
  export  const router = createBrowserRouter([ 
   { path: "/", element : <Main></Main>, errorElement : <ErrorPage/>, children : [
@@ -30,8 +31,8 @@ import Payment from '../Pages/Dashboard/Payment/Payment';
  {
   path : "/dashboard", element : <DashboardLayout></DashboardLayout>, errorElement : <ErrorPage/> , children : [
     {path : "/dashboard", element : <MyOrder></MyOrder>},
-    {path : "/dashboard/myproduct", element : <MyProduct></MyProduct> },
-    {path : "/dashboard/addproduct", element :<><AddProduct></AddProduct></>  },
+    {path : "/dashboard/myproduct", element : <SellerRoute> <MyProduct></MyProduct></SellerRoute> },
+    {path : "/dashboard/addproduct", element :<SellerRoute><AddProduct></AddProduct></SellerRoute>  },
     {path : "/dashboard/allseller", element : <AdminRoute><AllSeller></AllSeller></AdminRoute> },
     {path : "/dashboard/allbuyer", element : <AdminRoute><AllBuyer></AllBuyer></AdminRoute> },
     {path : "/dashboard/payment/:id", element : <><Payment></Payment></> , loader :  async({params}) => await  fetch(`http://localhost:5000/booking/${params.id}`) }

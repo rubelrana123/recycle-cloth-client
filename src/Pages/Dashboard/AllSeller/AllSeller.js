@@ -9,7 +9,13 @@ const AllSeller = () => {
      queryFn : async () => { 
         
       try {
-     const res = await fetch('http://localhost:5000/user?role=Seller');
+     const res = await fetch('http://localhost:5000/user?role=Seller', {
+       headers : {
+        authorization : `bearer ${localStorage.getItem('token')}`
+      },
+     }
+     );
+
      
       const data = res.json();
       return data;

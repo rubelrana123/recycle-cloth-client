@@ -31,6 +31,7 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
       phone : phone,
       location :  location,
       date : date
+       
  
     }
     console.log(booking);
