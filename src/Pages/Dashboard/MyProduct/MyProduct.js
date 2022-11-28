@@ -85,6 +85,7 @@ const handleDelete = id => {
         <th>Image</th>
         <th>Name</th>
         <th>Price</th>
+        <th>Status</th>
         <th>Advertise</th>
         <th>Action</th>
       </tr>
@@ -114,6 +115,15 @@ const handleDelete = id => {
            <td className='font-semibold'>
            {product?.resale_price}
  
+        </td>
+        <td>
+          {
+            product?.paid ?
+              <p>Sold</p>
+            :
+            <p>Available</p>
+
+          }
         </td>
            <td className='font-semibold'>
         {
