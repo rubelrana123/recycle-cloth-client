@@ -50,7 +50,7 @@ const AdvertisegitCard = ({product, setEachProduct}) => {
            <h2 className='flex gap-2 items-center'> <MapPinIcon className='h-5'></MapPinIcon> Location : {product?.location}</h2>
           <p className='flex gap-2 items-center'><BuildingStorefrontIcon className='h-5'></BuildingStorefrontIcon> <span>Used Year : {product.year_used}</span></p>
          <h2 className='flex gap-2 items-center'><CalendarIcon className='h-5'></CalendarIcon> <span>Post Date : {product.published_date}</span></h2>
-          <p className='flex items-center gap-2'>
+         <p className='flex items-center gap-2'>
             <UserIcon className='h-5'></UserIcon>
             <p>Seller : {product.seller_name}</p>
             {

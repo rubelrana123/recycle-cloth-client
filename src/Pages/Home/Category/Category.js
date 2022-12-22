@@ -35,7 +35,7 @@ const Category = () => {
         <div className='grid mt-8 gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:mx-14 md:mx-8 mx-6 text-white mb-12 '>
 
         {
-          categories.map(category => {
+          categories?.map(category => {
              return (
                <Link key={category._id} to= {`category/${category.id}`} >
                   

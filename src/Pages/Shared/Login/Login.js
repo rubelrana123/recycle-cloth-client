@@ -5,6 +5,8 @@ import toast from 'react-hot-toast';
  
  
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import SmallSpinner from '../../../components/SmallSpinner';
+import Spinner from '../../../components/Spinner';
 import { AuthContext } from '../../../Contexts/AuthProvider';
  
 import UserToken from '../../../Hooks/UseToken';
@@ -27,6 +29,7 @@ const Login = () => {
       
 	}
     }, [token])
+   
     const onSubmit = data =>{
 		console.log(data)
 		signin(data?.email, data?.password).then((userCredential) => {
@@ -41,6 +44,7 @@ const Login = () => {
   .catch((error) => {
     const errorMessage = error.message;
     setError(errorMessage);
+    setLoading(false)
 		
 
 
@@ -97,27 +101,9 @@ const Login = () => {
         })
    }
 
-
-
- 
-	// const handleBlurEmail = (e) =>{
-	// 	const email = e.target.value;
-	// 	// console.log("email got ",email);
-	// 	setUserEmail(email);
-	// }
-	// const handleForgetPassword = () =>{
-
-	// 	forgetPassword(userEmail).then(() => {
-  //     //  toast.success("  Password reset email sent!", {autoClose : 200})
-  //       // .. 
-  //       })
-  //     .catch((error) => {
-       
-  //       const errorMessage = error.message;
-	// 			console.log(errorMessage);
-  //       // ..
-  //     });
-	// }
+  if(loading) {
+    return <SmallSpinner></SmallSpinner>
+  }
   
   return (
     <div className={`p-12 `}>

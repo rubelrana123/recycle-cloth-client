@@ -1,5 +1,6 @@
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../../../Contexts/AuthProvider";
 
  
@@ -7,8 +8,8 @@ import { AuthContext } from "../../../../Contexts/AuthProvider";
 
 const BookingModal = ({eachProduct, setEachProduct}) => {
   const {user} = useContext(AuthContext);
-  console.log("modal", user);
-  console.log("modal product", eachProduct);
+  // console.log("modal", user);
+  // console.log("modal product", eachProduct);
   // console.log(treatment.price);
 
   const handleForm = e => {
@@ -25,7 +26,7 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
       product_name : eachProduct?.product_name,
       product_id : eachProduct?._id,
      image : eachProduct.image,
-      price : price,
+      price :price,
       name : name,
       email : email,
       phone : phone,
@@ -47,11 +48,11 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
 
         setEachProduct(null);
         
-        // toast.success("succesfully booking")
+        toast.success("succesfully booking")
         console.log(data)
       }
       else {
-        // toast.error(data.message)
+        toast.error(data.message)
       }
     })
     console.log(booking);
@@ -70,7 +71,10 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
       <input type="name" name="price" disabled  defaultValue= {eachProduct?.resale_price}    className="input input-bordered w-full " />
     <input type="text" name='location' placeholder="Meeting Location" className="input input-bordered w-full " required/>
       <input type="number"  name="phone"   placeholder="Phone number +8801*********" className="input input-bordered w-full " required />
+ 
       <input type="submit" placeholder="Type here" className="input input-bordered btn btn-accent w-full " />
+
+ 
     </form>
   </div>
 </div>

@@ -24,8 +24,9 @@ const MyProduct = () => {
   })
 
 const handleDelete = id => {
-    console.log(id);
-    fetch(`https://recycle-cloth-server.vercel.app/product/${id}`, {
+    const proceed = window.confirm('Are you sure, you want to Delete Your Product');
+        if(proceed){  
+          fetch(`https://recycle-cloth-server.vercel.app/product/${id}`, {
       method: 'DELETE',
       headers : {
           authorization : `bearer ${localStorage.getItem('token')}`
@@ -37,13 +38,19 @@ const handleDelete = id => {
       toast.success("Delete User Successfully")
         console.log(data);
     })
+
+        }
+ 
+   
   }
 
 
 
 
  const handleAdvertise = id => {
-        fetch(`https://recycle-cloth-server.vercel.app/product/${id}`, {
+        const proceed = window.confirm('Are you sure, you want to Advertise Your Product');
+        if(proceed){ 
+               fetch(`https://recycle-cloth-server.vercel.app/product/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`
@@ -56,6 +63,10 @@ const handleDelete = id => {
                 refetch()
             })
 
+
+         }
+
+       
     }
 
 
@@ -76,6 +87,8 @@ const handleDelete = id => {
 
   return (
    <div>
+             <h1 className='text-4xl py-3 text-start'>My Product</h1>
+
      <div className="overflow-x-auto w-full">
   <table className="table w-full">
  

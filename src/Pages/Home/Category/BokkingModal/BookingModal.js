@@ -1,5 +1,6 @@
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../../../Contexts/AuthProvider";
 
  
@@ -20,7 +21,7 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
     const phone = form?.phone?.value;
     const location = form?.location?.value;
     const date = new Date().toLocaleString();
-    // console.log(price, phone, email, name, date, location);
+   
     const booking = {
       product_name : eachProduct?.product_name,
       product_id : eachProduct?._id,
@@ -48,11 +49,12 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
 
         setEachProduct(null);
         
-        // toast.success("succesfully booking")
+        toast.success("succesfully booking")
         console.log(data)
       }
       else {
-        // toast.error(data.message)
+        toast.error(data.message)
+         
       }
     })
     console.log(booking);

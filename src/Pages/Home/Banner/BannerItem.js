@@ -17,7 +17,7 @@ const BannerItem = ({slide}) => {
                     <p className='lg:text-5xl md:text-4xl text-3xl font-bold text-white'>{descripton}</p>
                 </div>
                 <div className="absolute flex justify-start transform -translate-y-1/2 w-2/5 left-24 top-3/4">
-                    <button className="btn btn-primary text-white rounded-md mr-5 ">Lets Go</button>
+                    <button className="btn btn-primary text-white rounded-md mr-5 btn-outline ">Buy NOw</button>
                     {/* <button className="btn btn-outline btn-warning">Largest Project</button> */}
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5  top-1/2">

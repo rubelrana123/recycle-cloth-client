@@ -35,8 +35,10 @@ const AllBuyer = () => {
     } 
 
  const handleDelete = id => {
-    console.log(id);
-    fetch(`https://recycle-cloth-server.vercel.app/user/${id}`, {
+  
+            const proceed = window.confirm('Are you sure, you want to make admin this Seller');
+        if(proceed){  
+      fetch(`https://recycle-cloth-server.vercel.app/user/${id}`, {
       method: 'DELETE',
       headers : {
           authorization : `bearer ${localStorage.getItem('token')}`
@@ -48,11 +50,16 @@ const AllBuyer = () => {
       toast.success("Delete User Successfully")
         console.log(data);
     })
+         }
+ 
+   
   }
 
 
   return (
      <div>
+             <h1 className='text-4xl py-3 text-start'>All Buyer</h1>
+
        <div>
     <div className="overflow-x-auto">
   <table className="table w-full">
@@ -60,8 +67,7 @@ const AllBuyer = () => {
     <thead>
       <tr>
         <th></th>
-        <th>Name</th>
-        <th>Price</th>
+        <th>Email</th>
         <th>Delete</th>
       </tr>
     </thead>
@@ -76,7 +82,6 @@ const AllBuyer = () => {
 
          <tr >
         <th>{i + 1}</th>
-        <td>{buyer.product_name}</td>
         <td> {buyer?.email}</td>
         <td> 
           <button onClick={() => handleDelete(buyer?._id)}  className="btn btn-ghost rounded-md  border-2  text-error   btn-md border-primary">Delete</button>

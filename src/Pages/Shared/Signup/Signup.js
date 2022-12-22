@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import Spinner from "../../../components/Spinner"
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import UserToken from '../../../Hooks/UseToken';
 import SmallSpinner from '../../../components/SmallSpinner';
@@ -20,7 +20,6 @@ const SignUp = () => {
   const [token] = UserToken(userCredentialEmail);
   console.log("create user",userCredentialEmail, token);
  
-
   if(token  ) {
     navigate("/");
   }
@@ -33,7 +32,7 @@ const SignUp = () => {
     const formData = new FormData();
     formData.append('image', image);
     const url = `https://api.imgbb.com/1/upload?key=6713f4ae42449c9bcbad8ca71691a54e`;
-
+    setLoading(true)
     fetch(url, {
       method: 'POST',
       body: formData,
@@ -51,13 +50,18 @@ const SignUp = () => {
               photoURL : imageData.data.url,
               displayName : data.name,
             }
-            console.log(profile);
+            console.log("line 53",profile);
+            //  setUserCredentialEmail(user?.email);
+              // saveUser(data.name, data.email, data.accountType)
+              // toast.success("profileupdate");
+              // 	setError(" ")
+              //    setLoading(false)
             profileUpdate(profile).then( () => {
-              setUserCredentialEmail(user?.email);
-              saveUser(data.name, data.email, data.accountType)
+              // setUserCredentialEmail(user?.email);
+              saveUser(data.name, data.email, data.accountType);
               toast.success("profileupdate");
-              	setError(" ")
-                 setLoading(false)
+              	setError(" ");
+                 setLoading(true);
               // navigate("/")
             }).catch(error =>{
               const errorMessage = error.message;
@@ -84,6 +88,7 @@ const SignUp = () => {
         const handleGoogleSignin = () =>{
 		    googleSignin().then((result) => {
           const user = result.user;
+          setLoading(true);
         
         saveSocialUser(user?.displayName, user?.email)
          
@@ -120,9 +125,9 @@ const SignUp = () => {
         .then(res => res.json())
         .then(data =>{
           if(data.acknowledged) {
-
-            setUserCredentialEmail(email)
-            toast.success("post success")
+             setLoading(false);
+            setUserCredentialEmail(email);
+            toast.success("post success");
           }
             console.log("social login data", data);
         })
@@ -142,7 +147,10 @@ const SignUp = () => {
         })
         .then(res => res.json())
         .then(data =>{
-          setUserCredentialEmail(email)
+               setUserCredentialEmail(email);
+               setLoading(false);
+             //https://meet.google.com/pdy-xaku-xbc
+             toast.success("user Save successfuly", {autoCLose : 200})
             console.log(data);
         })
     }

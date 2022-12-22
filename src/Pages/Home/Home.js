@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Contexts/AuthProvider';
+import PrivateRoute from '../../Route/PrivateRoute';
 import EachAdvertise from './Advirtise/EachAdvertise/EachAdvertise';
 import Banner from './Banner/Banner';
 import Category from './Category/Category';
@@ -7,6 +9,7 @@ import DisCount from './Discount/DisCount';
  
 
 const Home = () => {
+  const {user} = useContext(AuthContext);
      const {data : products =[],refetch, isLoading} = useQuery({
     queryKey: ['products'],
     queryFn: () =>
@@ -24,9 +27,13 @@ const Home = () => {
         <Banner></Banner>
         <Category></Category>
         {
-         products.length > 0 &&
+        user?.email &&  products.length > 0 &&
+     
+
         <EachAdvertise products={products} refetch={refetch} isLoading={isLoading}></EachAdvertise>
-        }
+
+        
+}
         <DisCount></DisCount>
     </div>
   );

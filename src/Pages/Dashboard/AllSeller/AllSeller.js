@@ -28,10 +28,11 @@ const AllSeller = () => {
      }
 
   }) 
-   console.log(sellers);
+ 
  const handleDelete = id => {
-    console.log(id);
-    fetch(`https://recycle-cloth-server.vercel.app/user/${id}`, {
+             const proceed = window.confirm('Are you sure, you want to Delete this Seller');
+        if(proceed){ 
+              fetch(`https://recycle-cloth-server.vercel.app/user/${id}`, {
       method: 'DELETE',
       headers : {
           authorization : `bearer ${localStorage.getItem('token')}`
@@ -43,10 +44,23 @@ const AllSeller = () => {
       toast.success("Delete User Successfully")
         console.log(data);
     })
+
+
+
+
+
+
+
+
+         }
+    
   }
 
   const handleMakeAdmin = id => {
-        fetch(`https://recycle-cloth-server.vercel.app/user/admin/${id}`, {
+
+        const proceed = window.confirm('Are you sure, you want to make admin this Seller');
+        if(proceed){ 
+          fetch(`https://recycle-cloth-server.vercel.app/user/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('token')}`
@@ -59,10 +73,19 @@ const AllSeller = () => {
                 refetch()
             })
 
+
+
+
+
+         }
+       
     }
 
   const handleMakeVerify =  (email) => {
-    console.log(email);
+
+            const proceed = window.confirm('Are you sure, you want to make Verify this Seller');
+        if(proceed){  
+
      fetch(`https://recycle-cloth-server.vercel.app/user/verify/${email}`, {
             method: 'PUT',
             headers: {
@@ -77,6 +100,11 @@ const AllSeller = () => {
             })
 
 
+        }
+ 
+
+
+
   }
 
  if(isLoading) {
@@ -85,7 +113,8 @@ const AllSeller = () => {
 
   return (
     <div className='m-6'>
-      <h1 className='text-4xl font-semibold'> All Seller</h1>
+             <h1 className='text-4xl py-3 text-start'>All Seller</h1>
+
            <div>
        <div>
     <div className="overflow-x-auto">
@@ -127,8 +156,8 @@ const AllSeller = () => {
              <button onClick={() => handleDelete(seller?._id)}  className="btn btn-ghost rounded-md  border-2  text-error   btn-md border-primary">Delete</button>
           
            </td>
-          <td>{seller?.role !== 'Admin' && <button onClick={() => handleMakeAdmin(seller?._id)} className="btn btn-xs btn-primary">Make Admin</button>}</td>
-          <td>{seller?.role === 'Admin' && <button  className="btn btn-xs">Admin</button>}</td>
+          <td>{seller?.role !== 'Admin' && <button onClick={() => handleMakeAdmin(seller?._id)} className="btn btn-ghost rounded-md  border-2  text-error   btn-md border-primary">Make Admin</button>}</td>
+          
 
         {/* <td> 
              <button onClick={() => handleMakeAdmin(seller?._id)}  className="btn btn-ghost rounded-md  border-2  text-error   btn-md border-primary">Delete</button>

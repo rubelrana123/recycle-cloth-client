@@ -24,7 +24,7 @@ const MyOrder = () => {
 
    const handleDelete = id => {
     console.log(id);
-    fetch(`https://recycle-cloth-server.vercel.app/booking/${id}`, {
+    fetch(`https://recycle-cloth-server.vercel.app/${id}`, {
       method: 'DELETE',
       headers : {
           authorization : `bearer ${localStorage.getItem('token')}`
@@ -47,6 +47,7 @@ const MyOrder = () => {
   return (
     <div>
        <div>
+        <h1 className='text-4xl py-3 text-start'>My Order</h1>
     <div className="overflow-x-auto">
   <table className="table w-full">
  
@@ -64,7 +65,7 @@ const MyOrder = () => {
 
 
       {
-        orders &&
+        orders  &&
         orders?.map((order, i) => {
           return (
 

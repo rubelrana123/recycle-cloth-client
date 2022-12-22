@@ -50,8 +50,8 @@ const Navbar = () => {
       </ul>
     </div>
     <div className='flex items-center'>
-      <img src={logo} className="h-10 w-10" alt="" />
-    <Link to="/" className=" normal-case text-xl">Recycle Cloth</Link>
+      <img src={logo} className="lg:h-10 lg:w-10  h-8" alt="" />
+    <Link to="/" className=" normal-case lg:text-xl  text-sm">Recycle Cloth</Link>
 
     </div>
   </div>

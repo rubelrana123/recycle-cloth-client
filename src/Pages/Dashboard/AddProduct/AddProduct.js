@@ -45,8 +45,8 @@ const AddProduct = () => {
         published_date: date,
         image: imageData.data.url,
          location : location,
-         resale_price: resalePrice,
-         original_price: originalPrice,
+         resale_price: resalePrice,      
+        original_price:  originalPrice,
         year_used: year_used  + " years",
           year_purchase : year_purchase,
           discription : discription,
@@ -54,7 +54,7 @@ const AddProduct = () => {
           phone: phoneNumber,
            seller_name: name,
           seller_email: user?.email,
-          seller_verify : false,
+          verify : false,
           advertise : false,
           paid : false
        }
@@ -84,6 +84,7 @@ const AddProduct = () => {
      }
   return (
     <div>
+             <h1 className='text-4xl py-3 text-start'>Add a Product</h1>
        
       <section className="p-6 bg-gray-100  text--50">
 	<form  onSubmit={handleForm}  className="container flex flex-col mx-auto space-y-12   ">
@@ -92,6 +93,10 @@ const AddProduct = () => {
         	<div className="col-span-full sm:col-span-3">
 					<label htmlFor="sellerName" className="text-sm">Seller Name</label>
 					<input id="sellerName" type="text" name='name'  defaultValue={user?.displayName} disabled  placeholder="Name" className="w-full px-3  rounded-md h-12"  required/> 
+				</div>
+        	<div className="col-span-full sm:col-span-3">
+					<label htmlFor="sellerName" className="text-sm">Seller Email</label>
+					<input id="sellerName" type="text" name='email'  defaultValue={user?.email} disabled  placeholder="Email" className="w-full px-3  rounded-md h-12"  required/> 
 				</div>
 				<div className="col-span-3">
 					<label htmlFor="address" className="text-sm">Mobile Number</label>
@@ -146,7 +151,7 @@ const AddProduct = () => {
 				<div className="col-span-full sm:col-span-3">
 					<label htmlFor="ClothPrice" className="text-sm">Cloth Category</label>
 					      <select name='category' className="select bg-white  select-ghost border-1 input-bordered w-full" required>
-           <option value="01" selected>shirt</option>
+           <option value="01" selected>Shirt</option>
      
                <option value="02" >Jeans</option>
                <option value="03" >Jacket</option>
@@ -155,11 +160,11 @@ const AddProduct = () => {
 				</div>
         	<div className="col-span-full sm:col-span-3">
 					<label htmlFor="Clotheyearpurchase" className="text-sm">Year of Purchase</label>
-					<input id="Clotheyearpurchase" type="number" name='yearpurchase' placeholder="Cloth  Resale price"className="w-full px-3 rounded-md h-12" required />
+					<input id="Clotheyearpurchase" type="number" name='yearpurchase' placeholder="Year of Purchase"className="w-full px-3 rounded-md h-12" required />
 				</div>
         	<div className="col-span-full sm:col-span-3">
 					<label htmlFor="ClotheUse" className="text-sm">Year of Use</label>
-					<input id="ClotheUse" type="number" name='yearuse' placeholder="Cloth  Resale price"className="w-full px-3 rounded-md h-12" required />
+					<input id="ClotheUse" type="number" name='yearuse' placeholder="Year of Use"className="w-full px-3 rounded-md h-12" required />
 				</div>
         	<div className="col-span-full sm:col-span-3">
 					<label htmlFor="Clothdescription" className="text-sm">Description</label>
