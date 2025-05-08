@@ -1,77 +1,126 @@
-import {
-  EnvelopeIcon,
-  PhoneIcon,
-  MapPinIcon,
-} from '@heroicons/react/24/solid';
-  // You'll need to create SVG components or use social media logos as inline SVGs or components
-
-const Footer = () => {
+import { ChevronDown, ChevronUp, Mail, MapPin, Phone, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+function Footer() {
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-6 mt-16">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+    <footer className="bg-gray-900 text-gray-100">
+      <div className="mx-auto max-w-6xl px-6">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-16">
+          {/* Company Info */}
+          <div>
+            <h3 className="text-2xl font-bold mb-6 text-emerald-400">Recycle Cloth</h3>
+            <p className="text-gray-400 mb-6">
+              Making sustainable fashion accessible and affordable for everyone. Join our mission to reduce textile waste.
+            </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors duration-300">
+                <Facebook className="w-6 h-6" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors duration-300">
+                <Twitter className="w-6 h-6" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors duration-300">
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors duration-300">
+                <Youtube className="w-6 h-6" />
+              </a>
+            </div>
+          </div>
+          
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6 text-white relative pb-2">
+              <span className="relative">
+                Quick Links
+                <span className="absolute -bottom-2 left-0 w-12 h-1 bg-emerald-500"></span>
+              </span>
+            </h3>
+            <ul className="space-y-3">
+              {['Home', 'About', 'Shop', 'Blog', 'Contact'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors duration-300">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          {/* Services */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6 text-white relative pb-2">
+              <span className="relative">
+                Services
+                <span className="absolute -bottom-2 left-0 w-12 h-1 bg-emerald-500"></span>
+              </span>
+            </h3>
+            <ul className="space-y-3">
+              {['Sell Your Clothes', 'Buy Recycled', 'Clothing Donation', 'Repair Services', 'Sustainable Tips'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors duration-300">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          {/* Newsletter */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6 text-white relative pb-2">
+              <span className="relative">
+                Newsletter
+                <span className="absolute -bottom-2 left-0 w-12 h-1 bg-emerald-500"></span>
+              </span>
+            </h3>
+            <p className="text-gray-400 mb-4">
+              Subscribe to our newsletter for updates on sustainable fashion and exclusive offers.
+            </p>
+            <div className="flex">
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="px-4 py-2 bg-gray-800 text-gray-100 rounded-l-lg w-full focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              />
+              <button
+                className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-r-lg transition-colors duration-300"
+              >
+                Join
+              </button>
+            </div>
+          </div>
+        </div>
         
-        {/* Brand/Intro */}
-        <div>
-          <h2 className="text-3xl font-extrabold text-primary mb-4">Recycle Cloth</h2>
-          <p className="text-gray-400 text-sm leading-relaxed">
-            Sustainable fashion starts here. Discover pre-loved clothes with a purpose.
-          </p>
-        </div>
-
-        {/* Contact Info */}
-        <div>
-          <h3 className="text-xl font-semibold mb-3">Get in Touch</h3>
-          <ul className="text-gray-300 text-sm space-y-2">
-            <li className="flex items-center gap-2">
-              <MapPinIcon className="h-5 w-5 text-primary" />
-              Fake Address, 9999 City
-            </li>
-            <li className="flex items-center gap-2">
-              <PhoneIcon className="h-5 w-5 text-primary" />
-              017123456789
-            </li>
-            <li className="flex items-center gap-2">
-              <EnvelopeIcon className="h-5 w-5 text-primary" />
-              rubelrana@gmail.com
-            </li>
-          </ul>
-        </div>
-
-        {/* Services */}
-        <div>
-          <h3 className="text-xl font-semibold mb-3">Services</h3>
-          <ul className="text-gray-300 text-sm space-y-2">
-            <li><a href="#" className="hover:text-primary">Buy & Shop</a></li>
-            <li><a href="#" className="hover:text-primary">Design</a></li>
-            <li><a href="#" className="hover:text-primary">Marketing</a></li>
-            <li><a href="#" className="hover:text-primary">Advertisement</a></li>
-          </ul>
-        </div>
-
-        {/* Social Media */}
-        <div>
-          <h3 className="text-xl font-semibold mb-3">Follow Us</h3>
-          <div className="flex gap-4 mt-2">
-            {/* Replace these with your Heroicons-based or custom social icons */}
-            <a href="#" className="hover:text-blue-500" aria-label="Facebook">
-              {/* <FacebookIcon className="w-6 h-6" /> */}
-            </a>
-            <a href="#" className="hover:text-sky-400" aria-label="Twitter">
-              {/* <TwitterIcon className="w-6 h-6" /> */}
-            </a>
-            <a href="#" className="hover:text-red-600" aria-label="YouTube">
-              {/* <YoutubeIcon className="w-6 h-6" /> */}
-            </a>
+        {/* Divider */}
+        <div className="border-t border-gray-800"></div>
+        
+        {/* Bottom Section */}
+        <div className="py-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="text-gray-400 text-sm">
+            © {new Date().getFullYear()} Recycle Cloth. All rights reserved.
+          </div>
+          <div className="mt-4 md:mt-0">
+            <ul className="flex space-x-6 text-sm">
+              <li>
+                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors duration-300">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors duration-300">
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors duration-300">
+                  Cookie Policy
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-
-      {/* Footer bottom */}
-      <div className="text-center mt-10 text-sm text-gray-500 border-t border-gray-700 pt-4">
-        © {new Date().getFullYear()} Recycle Cloth. All rights reserved.
-      </div>
     </footer>
   );
-};
-
+}
 export default Footer;
