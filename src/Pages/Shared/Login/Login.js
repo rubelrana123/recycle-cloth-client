@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
  
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SmallSpinner from '../../../components/SmallSpinner';
-import Spinner from '../../../components/Spinner';
+// import Spinner from '../../../components/Spinner';
 import { AuthContext } from '../../../Contexts/AuthProvider';
  
 import UserToken from '../../../Hooks/UseToken';
@@ -66,7 +66,7 @@ const Login = () => {
 			})
 			.catch((error) => {
 				// Handle Errors here.
-				const errorCode = error.code;
+				// const errorCode = error.code;
 				const errorMessage = error.message;
 				
 				 console.log(errorMessage);

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../Contexts/AuthProvider';
-import Spinner from "../../../components/Spinner"
+// import Spinner from "../../../components/Spinner"
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import UserToken from '../../../Hooks/UseToken';
@@ -99,7 +99,7 @@ const SignUp = () => {
 		})
 			.catch((error) => {
 				// Handle Errors here.
-				const errorCode = error.code;
+				// const errorCode = error.code;
 				const errorMessage = error.message;
 				setError(error)
 				 console.log(errorMessage);

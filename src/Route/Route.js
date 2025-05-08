@@ -15,7 +15,7 @@ import AllBuyer from '../Pages/Dashboard/AllBuyer/AllBuyer';
 import PrivateRoute from './PrivateRoute';
 import AdminRoute from './AdminRoute';
 import MyProduct from '../Pages/Dashboard/MyProduct/MyProduct';
-import UseSeller from '../Hooks/UseSeller';
+// import UseSeller from '../Hooks/UseSeller';
 import Payment from '../Pages/Dashboard/Payment/Payment';
 import SellerRoute from './SellerRoute';
 import ReportedItem from '../Pages/Dashboard/ReportedItem/ReportedItem';
@@ -26,7 +26,7 @@ import ReportedItem from '../Pages/Dashboard/ReportedItem/ReportedItem';
    { path : "/signup", element : <SignUp></SignUp>},
    { path : "/login", element : <Login></Login>},
    { path : "/blog", element : <><Blog></Blog></>},
-   { path : "/category/:id", loader :async ({params}) => await fetch(`https://recycle-cloth-server.vercel.app/category/${params.id}`), element : <PrivateRoute>< EachCategory></ EachCategory></PrivateRoute>},
+   { path : "/category/:id", loader :async ({params}) => await fetch(`https://recycle-cloth-server.vercel.app/category/${params.id}`), element : <>< EachCategory></ EachCategory></>},
     
  ]},
  {

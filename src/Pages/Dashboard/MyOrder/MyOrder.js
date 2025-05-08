@@ -65,7 +65,7 @@ const MyOrder = () => {
 
 
       {
-        orders  &&
+        orders  ?
         orders?.map((order, i) => {
           return (
 
@@ -113,6 +113,8 @@ const MyOrder = () => {
 
           )
         })
+        : 
+      <p className='flex items-center text-5xl'>no item</p>
       }
      
 

@@ -17,7 +17,7 @@ const Navbar = () => {
     })
 
   }
-  const menuItem = <React.Fragment>
+  const menuItem = <>
           <li><Link to="/">Home</Link></li>
            <li><Link to="/blog" >Blog</Link></li>
       
@@ -37,7 +37,7 @@ const Navbar = () => {
           :  
         <li><Link to="/login">Login</Link></li>
         }
-  </React.Fragment>
+  </>
   return (
     <div className="navbar bg-base-100 px-5 shadow-lg">
   <div className="navbar-start">
