@@ -33,7 +33,7 @@ const Home = () => {
     <div>
          {/* <Testimonial></Testimonial> */}
          {/* <Bannerslide></Bannerslide> */}
-         {/* <Banner></Banner> */}
+         <Banner></Banner>  
          {/* <Category></Category>
         { 
         // user?.email &&  
