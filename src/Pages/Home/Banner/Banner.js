@@ -15,7 +15,7 @@ export default function Banner() {
   const slides = [
     {
       id: 1,
-      image: img1,
+      image: img2,
       title: "Sustainable Fashion",
       subtitle: "Buy and Sell Pre-loved Clothing",
       cta: "Shop Now",
@@ -23,7 +23,7 @@ export default function Banner() {
     },
     {
       id: 2,
-      image: img2,
+      image: img1,
       title: "Reduce Textile Waste",
       subtitle: "Join Our Eco-friendly Mission",
       cta: "Learn More",

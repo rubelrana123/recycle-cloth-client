@@ -34,7 +34,8 @@ const Home = () => {
          {/* <Testimonial></Testimonial> */}
          {/* <Bannerslide></Bannerslide> */}
          <Banner></Banner>  
-         {/* <Category></Category>
+         <Category></Category>
+         {/* 
         { 
         // user?.email &&  
         products.length > 0 &&
