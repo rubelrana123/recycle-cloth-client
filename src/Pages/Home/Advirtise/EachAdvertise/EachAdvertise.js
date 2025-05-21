@@ -13,10 +13,10 @@ const EachAdvertise = ({products, refetch, isLoading}) => {
 
    console.log(products);
   return (
-       <div className='py-8 lg:mx-16  md:mx-10 mx-6' >
+       <div className=' lg:mx-16  md:mx-10 mx-6' >
     <div className='text-start'>
       
-      <h2 className="text-4xl  my-10 font-semibold">Our Advertise Product</h2>
+      <h2 className="text-4xl  my-10 font-semibold">Recomended For You</h2>
  
     </div>
      <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3  lg:gap-8 gap-4'>

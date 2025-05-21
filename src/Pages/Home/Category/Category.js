@@ -21,7 +21,7 @@ const { data: categories, isLoading } = useQuery({
 
    console.log("categoties", categories) 
    if(isLoading) {
-    // return <SmallSpinner></SmallSpinner>
+    return <SmallSpinner></SmallSpinner>
    }
 
 //   //id
@@ -40,7 +40,7 @@ const { data: categories, isLoading } = useQuery({
 
 
   return (
-   <section className="py-16 bg-gray-50">
+   <section className="pt-8 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">Browse Categories</h2>

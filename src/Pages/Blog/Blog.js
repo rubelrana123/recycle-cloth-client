@@ -1,5 +1,6 @@
 import React from 'react';
 import BlogQuestion from './BlogQuestion';
+import { Divide } from 'lucide-react';
 
 const Blog = () => {
   const data = [
@@ -54,7 +55,8 @@ URL state – Data that exists on our URLs, including the pathname and query par
 		}
 	];
   return (
-    <div className='w-[90%] mt-5   mx-auto'>
+    <div className='bg-emerald-100'>
+	 <div className='w-[90%] pt-36   mx-auto '>
 			<h1 className='text-center my-4 text-4xl font-bold'>Blog Question</h1>
   <div>
 		  {
@@ -64,6 +66,7 @@ URL state – Data that exists on our URLs, including the pathname and query par
     
       
     </div>
+	</div>
   );
 };
 

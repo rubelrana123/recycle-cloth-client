@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
  import logo from "../../../asserts/Logo/Logo (2).png"
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,8 +7,23 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const Navbar = () => {
   const {user, signout} = useContext(AuthContext);
+  
   const navigate = useNavigate();
   console.log("username", user, user?.displayName);
+  //scroll controll
+  // const [isScrolled, setIsScrolled] = useState(false);
+  //   useEffect(() => {
+  //     const handleScroll = () => {
+  //       if (window.scrollY > 10) {
+  //         setIsScrolled(true);
+  //       } else {
+  //         setIsScrolled(false);
+  //       }
+  //     };
+  
+  //     window.addEventListener('scroll', handleScroll);
+  //     return () => window.removeEventListener('scroll', handleScroll);
+  //   }, []);
   const handleLogOut = () => {
     signout().then( () => {
       navigate("/")
@@ -39,7 +54,8 @@ const Navbar = () => {
         }
   </>
   return (
-    <div className="navbar bg-base-100 px-5 shadow-lg">
+    <div className="navbar fixed top-0 left-0 right-0 z-50 bg-white"
+      >
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -49,14 +65,24 @@ const Navbar = () => {
            {menuItem}
       </ul>
     </div>
-    <div className='flex items-center'>
-      <img src={logo} className="lg:h-10 lg:w-10  h-8" alt="" />
-    <Link to="/" className=" normal-case lg:text-xl  text-sm">Recycle Cloth</Link>
+    <div className='flex items-center '>
+    
+    <Link to="/" className=" normal-case lg:text-xl text-sm ml-28">
+                  <div className={`text-2xl  font-bold`}>
+                <span className="flex items-center text-emerald-500">
+                  <Recycle size={24} className="mr-2" />
+                  Clothe
+                </span>
+              </div>
+    </Link>
 
     </div>
   </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal p-0">
+  {/* //{`px-4 py-2 rounded-md flex items-center ${
+                        isScrolled ? 'text-gray-700 hover:text-teal-600' : 'text-white hover:text-emerald-300'
+                      }`} */}
+  <div className='navbar-center hidden lg:flex text-gray-700 hover:text-teal-600'>
+    <ul className="menu menu-horizontal p-0 border">
       {menuItem}
      
     </ul>
@@ -70,3 +96,28 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// Add Recycle icon component since it wasn't included in the imports
+function Recycle(props) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={props.size || 24}
+      height={props.size || 24}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={props.className || ""}
+    >
+      <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5" />
+      <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12" />
+      <path d="m14 16-3 3 3 3" />
+      <path d="M8.293 13.596 7.196 9.5 3.1 10.598" />
+      <path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843" />
+      <path d="m13.378 9.633 4.096 1.098 1.097-4.096" />
+    </svg>
+  );
+}

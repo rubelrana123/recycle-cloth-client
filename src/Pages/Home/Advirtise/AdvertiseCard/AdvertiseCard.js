@@ -1,11 +1,24 @@
 import { ArrowRightIcon, BuildingStorefrontIcon, CalendarIcon, CheckBadgeIcon, CurrencyBangladeshiIcon, CurrencyDollarIcon, ExclamationTriangleIcon, MapPinIcon, StarIcon, UserIcon } from '@heroicons/react/24/solid';
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import BookingModal from '../BokkingModal/BookingModal';
+import { AuthContext } from '../../../../Contexts/AuthProvider';
 
 const AdvertisegitCard = ({product, setEachProduct}) => {
   console.log("object", product);
+    const {user} = useContext(AuthContext);
+     const navigate = useNavigate();
+     const location = useLocation();
+
+  const handleBookNow = () => {
+    if (user?.email) {
+      setEachProduct(product);
+    } else {
+      toast.error("Please login to book the product");
+      navigate('/login', { state: { from: location }, replace: true });
+    }
+  };
 
    const handleReported = (id) => {
      console.log(id);
@@ -63,7 +76,7 @@ const AdvertisegitCard = ({product, setEachProduct}) => {
     <div className="card-actions my-3 justify-start">
       
        <label
-       onClick={() => setEachProduct(product)}
+         onClick={handleBookNow}
         htmlFor="booking-modal" 
         className="btn btn-primary  rounded-md text-white"
      >Book Now</label> 

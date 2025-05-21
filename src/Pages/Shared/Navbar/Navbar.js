@@ -68,18 +68,18 @@ export default function Navbar() {
 
   // Navigation items
   const navItems = [
-    { name: 'Home', link: '#' },
+    { name: 'Home', link: '/' },
     { 
       name: 'Shop', 
-      link: '#',
+      link: '/shop',
       dropdown: [
-        { name: 'Women', link: '#' },
-        { name: 'Men', link: '#' },
-        { name: 'Kids', link: '#' },
-        { name: 'Accessories', link: '#' }
+        { name: 'Kids', link: '/category/01' },
+        { name: 'Pant', link: '/category/02' },
+        { name: 'Jacket', link: '/category/03' },
+        
       ]
     },
-    { name: 'Sell', link: '#' },
+    { name: 'Sell', link: '/blog' },
     { name: 'Blog', link: '#' },
     { name: 'About', link: '#' },
   ];

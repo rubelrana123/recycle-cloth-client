@@ -72,7 +72,7 @@ export default function Banner() {
   
   return (
     <div 
-      className="relative h-[calc(100vh-200px)] md:h-128 overflow-hidden bg-teal-900"
+      className="relative h-[calc(100vh-80px)]  overflow-hidden bg-teal-900 mt-12"
       onMouseEnter={pauseAutoPlay}
       onMouseLeave={resumeAutoPlay}
     >

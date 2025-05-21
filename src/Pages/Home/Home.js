@@ -35,16 +35,10 @@ const Home = () => {
          {/* <Bannerslide></Bannerslide> */}
          <Banner></Banner>  
          <Category></Category>
-         {/* 
-        { 
-        // user?.email &&  
-        products.length > 0 &&
+  
      
-
-        // <EachAdvertise products={products} refetch={refetch} isLoading={isLoading}></EachAdvertise>
-
-        
- }  */}
+      <EachAdvertise products={products} refetch={refetch} isLoading={isLoading}></EachAdvertise>
+ 
      <ShopingInfo></ShopingInfo>
           <FAQ></FAQ>
         <ContactSection></ContactSection>
